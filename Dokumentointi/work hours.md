@@ -8,10 +8,10 @@ Työtä tehty yhteensä 5h
 
 Työtä jäljellä: 
 
-* Articlen luonti 3h
+* Articlen luonti 5h
 
-* BibTex dokumentin generointi 3h
+* BibTex dokumentin generointi 4h
 
-* Articlen selailu 2h 
+* Articlen selailu 3h 
 
-* Articlen poisto ja muokkaus 2h
+* Articlen poisto ja muokkaus 3h
