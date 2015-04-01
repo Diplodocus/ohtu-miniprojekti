@@ -2,6 +2,8 @@ package miniprojekti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,16 +16,19 @@ import miniprojekti.service.PersonService;
 import java.util.Map;
 
 @Controller
-public class PersonController {
+public class DefaultController {
 
     @Autowired
     private PersonService personService;
 
     @RequestMapping("/")
-    public String listPeople(Map<String, Object> map) {
+    public String listPeople(Model model) {
 
-        map.put("person", new Person());
-        map.put("peopleList", personService.listPeople());
+        Person p = new Person();
+        p.setFirstName("Torsti");
+        p.setLastName("Torstai");
+        model.addAttribute("torsti", p);
+        model.addAttribute("peopleList", personService.listPeople());
 
         return "people";
     }

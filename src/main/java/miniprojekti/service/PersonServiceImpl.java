@@ -1,4 +1,4 @@
-package com.example.service;
+package miniprojekti.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,8 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import java.com.miniprojekti.model.Person;
-import java.com.miniprojekti.service.PersonService;
+import miniprojekti.model.Person;
 import java.util.List;
 
 @Service
