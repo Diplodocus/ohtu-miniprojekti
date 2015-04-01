@@ -12,30 +12,39 @@
 ##Tekniset tehtävät
 
 
-	**Articlen luonti -task**
+**Articlen luonti -task**
+
+Tuntiarvio: 5
 	
-	Kentän validointi selaimessa
-	Kenttien rajaaminen selaimessa
+Kentän validointi selaimessa
+Kenttien rajaaminen selaimessa
 
-	Syötteenä:
-		String kentän tyyppi
-		String kentän sisältö
+Syötteenä:
+* String kentän tyyppi
+* String kentän sisältö
 
-	Tallennetaan Refenrence olioon:
-		Map avaimeksi enum ja valueen sisältö
+Tallennetaan Refenrence olioon:
+* Map avaimeksi enum ja valueen sisältö
 
-	**Bibtex dokumentin generointi -task**	
-	Reference oliosta generoidaan BibTex syntaksinen String
+**Bibtex dokumentin generointi -task**
+
+Tuntiarvio: 5
 	
-	Stringeistä generoidaan BibTex syöte
-
-	Tiedoston generoiva luokka generoi syötteistä BibTex tiedoston
-
-	**Articlejen selailu -task**
+Reference oliosta generoidaan BibTex syntaksinen String
 	
-	Kannasta listataan article referencet selaimeen tarkasteltavaksi
+Stringeistä generoidaan BibTex syöte
 
-	**Articlen poisto ja muokkaus -task**
+Tiedoston generoiva luokka generoi syötteistä BibTex tiedoston
 
-	Saadaan avattua reference uudelleen tarkasteltavaksi. Voidaan muokata ja tallentaa. Voidaan myös poistaa.
+**Articlejen selailu -task**
+
+Tuntiarvio: 3
+	
+Kannasta listataan article referencet selaimeen tarkasteltavaksi
+
+**Articlen poisto ja muokkaus -task**
+
+Tuntiarvio: 2
+
+Saadaan avattua reference uudelleen tarkasteltavaksi. Voidaan muokata ja tallentaa. Voidaan myös poistaa.
 
