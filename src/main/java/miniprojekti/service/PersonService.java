@@ -1,11 +1,12 @@
-package java.com.miniprojekti.service;
+package miniprojekti.service;
 
 
-import java.com.miniprojekti.model.Person;
+
 import java.util.List;
+import miniprojekti.model.Person;
+import org.springframework.stereotype.Service;
 
-
-
+@Service
 public interface PersonService {
     
     public void addPerson(Person person);

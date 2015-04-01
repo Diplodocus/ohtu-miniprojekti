@@ -1,4 +1,4 @@
-package java.com.miniprojekti.model;
+package miniprojekti.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
