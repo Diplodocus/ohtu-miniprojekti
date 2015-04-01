@@ -14,7 +14,7 @@
 
 **Articlen luonti -task**
 
-Tuntiarvio: 5
+Tuntiarvio: 7
 	
 Kentän validointi selaimessa
 Kenttien rajaaminen selaimessa
@@ -28,7 +28,7 @@ Tallennetaan Refenrence olioon:
 
 **Bibtex dokumentin generointi -task**
 
-Tuntiarvio: 5
+Tuntiarvio: 7
 	
 Reference oliosta generoidaan BibTex syntaksinen String
 	
@@ -44,7 +44,7 @@ Kannasta listataan article referencet selaimeen tarkasteltavaksi
 
 **Articlen poisto ja muokkaus -task**
 
-Tuntiarvio: 2
+Tuntiarvio: 3
 
 Saadaan avattua reference uudelleen tarkasteltavaksi. Voidaan muokata ja tallentaa. Voidaan myös poistaa.
 
