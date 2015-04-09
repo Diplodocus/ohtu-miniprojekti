@@ -20,6 +20,7 @@ import static miniprojekti.reference.BibTexType.*;
 public class ArticleReferenceTest {
 
     ArticleReference articleReference;
+    ArticleReference articleReference2;
 
     @Before
     public void setUp() {
@@ -34,10 +35,26 @@ public class ArticleReferenceTest {
         entries.put(PAGES, "624--632");
         articleReference = new ArticleReference("SS86", entries);
 
+        EnumMap<EntryType, String> entries2;
+        entries2 = new EnumMap<EntryType, String>(EntryType.class);
+        entries2.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
+        entries2.put(TITLE, "Novice mistakes: are the folk wisdoms correct?");
+        entries2.put(JOURNAL, "Commun. ACM");
+        entries2.put(VOLUME, "29");
+        entries2.put(NUMBER, "7");
+        entries2.put(YEAR, "1986");
+        entries2.put(PAGES, "624--632");
+        articleReference2 = new ArticleReference("SS86", entries);
+
     }
 
     @Test
-    public void typeIsArticle() {
+    public void setNameTest() {
+        assertEquals("SS86", articleReference.getName());
+    }
+
+    @Test
+    public void typeIsSetToArticle() {
         assertEquals(ARTICLE, articleReference.getType());
     }
 
