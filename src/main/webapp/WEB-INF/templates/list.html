@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8" />
 <head lang="en">
-    <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
 
 <tr th:each="message : ${lista}">
-    <td th:text="${message.id}">1</td>
-    <td th:text="${message.text}">Text ...</td>
+    <td th:text="${message.name}">1</td>
 </tr>
 
-<form action="#" th:action="@{/bibtex}" th:object="${bibtex}" method="post">
-    <input type="text" th:field="*{Author}" />
-
-</form>
 </body>
 </html>
