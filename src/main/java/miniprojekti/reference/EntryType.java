@@ -2,8 +2,7 @@ package miniprojekti.reference;
 
 import javax.print.attribute.standard.PagesPerMinute;
 
-/**
- * Created by cec on 1.4.2015.,
+/*
  */
 public enum EntryType {
 

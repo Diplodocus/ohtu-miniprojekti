@@ -6,7 +6,7 @@ import static miniprojekti.reference.BibTexType.ARTICLE;
 import static miniprojekti.reference.EntryType.*;
 
 /**
- * Created by cec on 9.4.2015.
+
  */
 public class AbstractReference implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi

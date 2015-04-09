@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by cec on 9.4.2015.
+
  */
 public class FileGenerator {
 

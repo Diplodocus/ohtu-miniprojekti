@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by cec on 1.4.2015.
+
  */
 public interface Reference {
 

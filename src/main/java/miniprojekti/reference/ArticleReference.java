@@ -6,7 +6,7 @@ import static miniprojekti.reference.BibTexType.*;
 import static miniprojekti.reference.EntryType.*;
 
 /**
- * Created by cec on 8.4.2015.
+
  */
 public class ArticleReference extends AbstractReference {
 
