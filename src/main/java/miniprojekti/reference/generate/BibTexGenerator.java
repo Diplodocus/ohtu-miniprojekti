@@ -2,10 +2,12 @@ package miniprojekti.reference.generate;
 
 import miniprojekti.reference.EntryType;
 import miniprojekti.reference.Reference;
+import org.springframework.stereotype.Service;
 
 /**
 
  */
+@Service
 public class BibTexGenerator {
 
 

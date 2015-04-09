@@ -5,7 +5,10 @@
  */
 package miniprojekti.controller;
 
+import miniprojekti.repository.ReferenceRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,15 +18,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class BibtexController {
-    
+
+    private ReferenceRepository referenceRepository;
+
     @RequestMapping("/bibtex")
-    public String list() {
-        
+    public String list(Model model) {
+        model.addAttribute("lista", referenceRepository.findAll());
+
         return "list";
     }
     
     @RequestMapping("/bibtex/{referenceId}")
-    public String view() {
+    public String view(Model model) {
         
         return "view";
     }

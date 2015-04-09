@@ -1,5 +1,8 @@
 package miniprojekti.reference;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import javax.persistence.Entity;
 import java.util.*;
 
 import static miniprojekti.reference.BibTexType.ARTICLE;
@@ -8,7 +11,8 @@ import static miniprojekti.reference.EntryType.*;
 /**
 
  */
-public class AbstractReference implements Reference {
+@Entity
+public class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
     private final BibTexType type;
     private final ArrayList<EntryType> mustHave;

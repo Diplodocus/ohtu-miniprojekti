@@ -1,5 +1,6 @@
 package miniprojekti.reference;
 
+import javax.persistence.Entity;
 import java.util.*;
 
 import static miniprojekti.reference.BibTexType.*;
@@ -8,6 +9,7 @@ import static miniprojekti.reference.EntryType.*;
 /**
 
  */
+@Entity
 public class ArticleReference extends AbstractReference {
 
 
