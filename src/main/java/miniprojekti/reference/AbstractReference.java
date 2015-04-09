@@ -1,5 +1,8 @@
 package miniprojekti.reference;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import javax.persistence.*;
 import java.util.*;
 
 import static miniprojekti.reference.BibTexType.ARTICLE;
@@ -8,20 +11,34 @@ import static miniprojekti.reference.EntryType.*;
 /**
 
  */
-public class AbstractReference implements Reference {
+@Entity
+public class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
-    private final BibTexType type;
-    private final ArrayList<EntryType> mustHave;
-    private final ArrayList<EntryType> mayHave;
+    private BibTexType type;
+
+    private ArrayList<EntryType> mustHave;
+
+    /* @ElementCollection(targetClass=EntryType.class)
+    @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
+    @CollectionTable(name="reference_type")
+    @Column(name="interest") // Column name in person_interest
+    Collection<EntryType> mustHave; */
+
+    private ArrayList<EntryType> mayHave;
+
     private String name;
+
     protected EnumMap<EntryType, String> entries;
 
     public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mustHave, ArrayList<EntryType> mayHave) {
         this.name = name;
         this.type = type;
         this.mustHave = mustHave;
-        this.entries = entries;
-        this. mayHave = mayHave;
+        //this.entries = entries;
+        //this. mayHave = mayHave;
+    }
+
+    public AbstractReference() {
     }
 
     /**
@@ -54,7 +71,7 @@ public class AbstractReference implements Reference {
      * @return the entries that must be added to the reference
      */
     @Override
-    public List<EntryType> getMandatoryReferenceEntries() {
+    public Collection<EntryType> getMandatoryReferenceEntries() {
         return mustHave;
     }
 
