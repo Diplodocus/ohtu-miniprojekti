@@ -21,7 +21,7 @@ public class DefaultController {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping("/")
+    @RequestMapping("*")
     public String listPeople(Model model) {
 
 //        Person p = new Person();
