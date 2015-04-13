@@ -3,6 +3,8 @@ package miniprojekti.reference.generate;
 import miniprojekti.reference.EntryType;
 import miniprojekti.reference.Reference;
 
+import java.util.ArrayList;
+
 /**
 
  */
@@ -29,6 +31,19 @@ public class BibTexGenerator {
         bibTex.append("\n}\n");
         return bibTex.toString();
 
+    }
+
+    public String generateAll(ArrayList<Reference> references){
+
+        StringBuilder wholeBibTex = new StringBuilder();
+        BibTexGenerator generator = new BibTexGenerator();
+        //generates a long string with all the bibTex parts in it
+        for (Reference reference : references) {
+            wholeBibTex.append(generator.generate(reference));
+            wholeBibTex.append("\n");
+
+        }
+        return wholeBibTex.toString();
     }
 
 
