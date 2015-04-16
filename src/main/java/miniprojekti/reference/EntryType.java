@@ -6,20 +6,31 @@ import javax.print.attribute.standard.PagesPerMinute;
  */
 public enum EntryType {
 
-    AUTHOR,
-    TITLE,
-    JOURNAL,
-    YEAR,
-    VOLUME,
-    NUMBER,
-    PAGES,
-    MONTH,
-    NOTE,
-    KEY;
+    AUTHOR("AUTHOR"),
+    TITLE("TITLE"),
+    JOURNAL("JOURNAL"),
+    YEAR("YEAR"),
+    VOLUME("VOLUME"),
+    NUMBER("NUMBER"),
+    PAGES("PAGES"),
+    MONTH("MONTH"),
+    NOTE("NOTE"),
+    KEY("KEY");
+
+    private final String type;
+
+    EntryType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return this.type;
+    }
 
 
-   public String getName(){
-       return name().toLowerCase();
-   }
+    public String getName() {
+        return name().toLowerCase();
+    }
+
 
 }

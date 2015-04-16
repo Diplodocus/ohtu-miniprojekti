@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8" />
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
 <head lang="en">
     <title></title>
 </head>
 <body>
 
-<tr th:each="message : ${lista}">
-    <td th:text="${message.name}">1</td>
+<ul th:each="message : ${lista}">
+    <li th:text="${message.name}">1</li>
+</ul>
+
+<tr th:each="enum : ${mandatory}">
+    <li th:text="${enum.type}"></li>
 </tr>
 
 </body>

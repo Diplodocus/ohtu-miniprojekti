@@ -5,9 +5,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Entity;
 import java.util.*;
 
-import static miniprojekti.reference.BibTexType.ARTICLE;
-import static miniprojekti.reference.EntryType.*;
-
 /**
 
  */
@@ -15,17 +12,17 @@ import static miniprojekti.reference.EntryType.*;
 public class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
     private final BibTexType type;
-    private final ArrayList<EntryType> mustHave;
-    private final ArrayList<EntryType> mayHave;
+    private final ArrayList<EntryType> mandatoryReferenceEntries;
+    private final ArrayList<EntryType> optionalReferenceEntries;
     private String name;
     protected EnumMap<EntryType, String> entries;
 
-    public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mustHave, ArrayList<EntryType> mayHave) {
+    public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mandatoryReferenceEntries, ArrayList<EntryType> optionalReferenceEntries) {
         this.name = name;
         this.type = type;
-        this.mustHave = mustHave;
+        this.mandatoryReferenceEntries = mandatoryReferenceEntries;
         this.entries = entries;
-        this. mayHave = mayHave;
+        this.optionalReferenceEntries = optionalReferenceEntries;
     }
 
     /**
@@ -35,6 +32,12 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
     public String getName(){
         return name;
     }
+
+    /**
+     * Set name
+     * @param name
+     */
+    public void setName(String name) { this.name = name;}
 
     /**
      * @return type of the reference
@@ -50,7 +53,7 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
      */
     @Override
     public List<EntryType> getOptionalReferenceEntries() {
-        return mayHave;
+        return optionalReferenceEntries;
     }
 
     /**
@@ -59,7 +62,7 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
      */
     @Override
     public List<EntryType> getMandatoryReferenceEntries() {
-        return mustHave;
+        return mandatoryReferenceEntries;
     }
 
     /**
