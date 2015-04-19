@@ -16,7 +16,8 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
     //TODO Halutaanko interface abstract classin lisäksi
     private BibTexType type;
 
-    private ArrayList<EntryType> mustHave;
+    @ElementCollection
+    private List<EntryType> mustHave;
 
     /* @ElementCollection(targetClass=EntryType.class)
     @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
@@ -24,7 +25,8 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
     @Column(name="interest") // Column name in person_interest
     Collection<EntryType> mustHave; */
 
-    private ArrayList<EntryType> mayHave;
+    @ElementCollection
+    private List<EntryType> mayHave;
 
     private String name;
 
