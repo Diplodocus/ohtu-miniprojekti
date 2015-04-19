@@ -36,8 +36,8 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
         this.name = name;
         this.type = type;
         this.mustHave = mustHave;
-        //this.entries = entries;
-        //this. mayHave = mayHave;
+        this.entries = entries;
+        this. mayHave = mayHave;
     }
 
     public AbstractReference() {
