@@ -73,7 +73,7 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
      * @return the entries that must be added to the reference
      */
     @Override
-    public Collection<EntryType> getMandatoryReferenceEntries() {
+    public List<EntryType> getMandatoryReferenceEntries() {
         return mustHave;
     }
 
