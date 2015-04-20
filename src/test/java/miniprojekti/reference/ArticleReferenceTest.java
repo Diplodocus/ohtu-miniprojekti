@@ -37,14 +37,14 @@ public class ArticleReferenceTest {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
-        entries2.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
-        entries2.put(TITLE, "Novice mistakes: are the folk wisdoms correct?");
-        entries2.put(JOURNAL, "Commun. ACM");
-        entries2.put(VOLUME, "29");
-        entries2.put(NUMBER, "7");
-        entries2.put(YEAR, "1986");
-        entries2.put(PAGES, "624--632");
-        articleReference2 = new ArticleReference("SS86", entries);
+        entries2.put(AUTHOR, "Juupajuu");
+        entries2.put(TITLE, "Juupajuun tarinoita");
+        entries2.put(JOURNAL, "Asd");
+        entries2.put(VOLUME, "4");
+        entries2.put(NUMBER, "2");
+        entries2.put(YEAR, "2015");
+        entries2.put(PAGES, "14--16");
+        articleReference2 = new ArticleReference("SS87", entries2);
 
     }
 
@@ -73,6 +73,25 @@ public class ArticleReferenceTest {
         optionalList = new ArrayList<EntryType>(Arrays.asList(NUMBER, PAGES, MONTH, NOTE, KEY));
 
         assertEquals(optionalList, articleReference.getOptionalReferenceEntries());
+    }
+
+    @Test
+    public void settingEntriesWorks() {
+        EnumMap<EntryType, String> entries;
+        entries = new EnumMap<EntryType, String>(EntryType.class);
+        entries.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
+        entries.put(TITLE, "Novice mistakes: are the folk wisdoms correct?");
+
+        articleReference = new ArticleReference("SS86", entries);
+
+        EnumMap<EntryType, String> entries2;
+        entries2 = new EnumMap<EntryType, String>(EntryType.class);
+        entries2.put(AUTHOR, "Juupajuu");
+        entries2.put(TITLE, "Juupajuun tarinoita");
+  
+        articleReference.setEntries(entries2);
+
+        assertEquals(articleReference.getEntries(), entries2);
     }
 
 }
