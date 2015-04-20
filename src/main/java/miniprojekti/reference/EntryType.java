@@ -1,9 +1,12 @@
 package miniprojekti.reference;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.print.attribute.standard.PagesPerMinute;
 
 /*
  */
+
 public enum EntryType {
 
     AUTHOR("AUTHOR"),
@@ -23,11 +26,11 @@ public enum EntryType {
         this.type = type;
     }
 
+    @Enumerated(EnumType.STRING)
     public String getType() {
         return this.type;
     }
-
-
+    
     public String getName() {
         return name().toLowerCase();
     }

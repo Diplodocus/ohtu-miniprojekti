@@ -2,6 +2,9 @@ package miniprojekti.reference;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.*;
+import java.util.*;
+
 import javax.persistence.Entity;
 import java.util.*;
 
@@ -11,10 +14,24 @@ import java.util.*;
 @Entity
 public class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
-    private final BibTexType type;
-    private final ArrayList<EntryType> mandatoryReferenceEntries;
-    private final ArrayList<EntryType> optionalReferenceEntries;
+
+    private BibTexType type;
+
+    @ElementCollection
+    private List<EntryType> mandatoryReferenceEntries;
+
+    /* @ElementCollection(targetClass=EntryType.class)
+    @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
+    @CollectionTable(name="reference_type")
+    @Column(name="interest") // Column name in person_interest
+    Collection<EntryType> mustHave; */
+
+    @ElementCollection
+    private List<EntryType> optionalReferenceEntries;
+
     private String name;
+
+    @MapKeyEnumerated(EnumType.STRING)
     protected EnumMap<EntryType, String> entries;
 
     public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mandatoryReferenceEntries, ArrayList<EntryType> optionalReferenceEntries) {
@@ -23,6 +40,9 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
         this.mandatoryReferenceEntries = mandatoryReferenceEntries;
         this.entries = entries;
         this.optionalReferenceEntries = optionalReferenceEntries;
+    }
+
+    public AbstractReference() {
     }
 
     /**
