@@ -54,8 +54,16 @@ public class BibtexController {
                         sisalto
                 )
         );
+        System.out.println("heh2");
         List<AbstractReference> reposta = referenceRepository.findAll();
-        if (reposta != null || reposta.size() < 1) {
+        System.out.println(reposta);
+        System.out.println("lel");
+        for (AbstractReference abstractReference : reposta) {
+            System.out.println(abstractReference);
+            System.out.println(abstractReference.getName());
+        }
+
+        if (reposta != null && reposta.size() >= 1) {
             for (AbstractReference ref : reposta) {
                 if (ref != null) {
                     references.add(ref);
@@ -69,8 +77,10 @@ public class BibtexController {
 
     @RequestMapping("/bibtex/{referenceId}")
     public String view(Model model, @PathVariable("referenceId") Long referenceId) {
-        AbstractReference reference = referenceRepository.findOne(referenceId);
-        model.addAttribute("reference", reference);
+        AbstractReference ref = referenceRepository.findOne(referenceId);
+        System.out.println(ref);
+        model.addAttribute("bibtex", new BibTexGenerator().generate(ref));
+        model.addAttribute("ref", ref);
         return "view";
     }
 
@@ -117,7 +127,7 @@ public class BibtexController {
     }
 
     @RequestMapping(value = "/bibtex/{referenceId}", method = RequestMethod.POST)
-    public String edit() {
+    public String edit(Model model) {
 
         return "redirect:/bibtex/";
     }

@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.*;
 
 import javax.persistence.Entity;
-import java.util.*;
 
 /**
 
@@ -31,10 +30,11 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
 
     private String name;
 
+    @ElementCollection
     @MapKeyEnumerated(EnumType.STRING)
-    protected EnumMap<EntryType, String> entries;
+    protected Map<EntryType, String> entries;
 
-    public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mandatoryReferenceEntries, ArrayList<EntryType> optionalReferenceEntries) {
+    public AbstractReference(String name, Map<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mandatoryReferenceEntries, ArrayList<EntryType> optionalReferenceEntries) {
         this.name = name;
         this.type = type;
         this.mandatoryReferenceEntries = mandatoryReferenceEntries;
