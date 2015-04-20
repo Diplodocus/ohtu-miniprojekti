@@ -10,9 +10,6 @@
     <li><a th:text="${ref.name}" th:href="@{/bibtex/{id}(id=${ref.id})}"></a></li>
 </ul>
 
-<ul th:each="enum : ${mandatory}">
-    <li th:text="${enum.type}"></li>
-</ul>
 
 </body>
 </html>

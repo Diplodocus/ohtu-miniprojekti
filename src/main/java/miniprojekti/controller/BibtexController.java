@@ -44,20 +44,8 @@ public class BibtexController {
         model.addAttribute("mandatory", article.getMandatoryReferenceEntries());
         model.addAttribute("optional", article.getOptionalReferenceEntries());
 
-        references.add(new ArticleReference(
-                        "nimi",
-                        sisalto
-                )
-        );
-        references.add(new ArticleReference(
-                        "toinen nimi",
-                        sisalto
-                )
-        );
-        System.out.println("heh2");
         List<AbstractReference> reposta = referenceRepository.findAll();
-        System.out.println(reposta);
-        System.out.println("lel");
+
         for (AbstractReference abstractReference : reposta) {
             System.out.println(abstractReference);
             System.out.println(abstractReference.getName());
@@ -78,7 +66,6 @@ public class BibtexController {
     @RequestMapping("/bibtex/{referenceId}")
     public String view(Model model, @PathVariable("referenceId") Long referenceId) {
         AbstractReference ref = referenceRepository.findOne(referenceId);
-        System.out.println(ref);
         model.addAttribute("bibtex", new BibTexGenerator().generate(ref));
         model.addAttribute("ref", ref);
         return "view";
@@ -97,7 +84,6 @@ public class BibtexController {
             mappi.put(key, null);
         }
         article.setEntries(mappi);
-        System.out.println(article.getEntries().toString());
         model.put("reference", article);
         model.addAttribute("mappi", mappi);
         model.addAttribute("mandatory", article.getMandatoryReferenceEntries());
@@ -111,9 +97,8 @@ public class BibtexController {
 
         BibTexGenerator gen = new BibTexGenerator();
         AbstractReference ref = referenceService.createReference(parameterMap);
-       // referenceRepository.save(ref);
+        referenceRepository.save(ref);
         BibTexGenerator bg = new BibTexGenerator();
-        System.out.println(ref.getEntries());
 
         return "redirect:/bibtex/" + ref.getId();
     }
