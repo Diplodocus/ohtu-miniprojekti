@@ -109,26 +109,38 @@ public class BibtexController {
     public String add(HttpServletRequest req, Model model) {
         Map<String, String[]> parameterMap = req.getParameterMap();
 
-        //AbstractReference ref = new ArticleReference(parameterMap.get("name")[0], parameterMap.get("entries"));
-        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
-
-            System.out.println(entry.getKey() + " = " + Arrays.toString(entry.getValue()));
-        }
         BibTexGenerator gen = new BibTexGenerator();
         AbstractReference ref = referenceService.createReference(parameterMap);
         referenceRepository.save(ref);
         BibTexGenerator bg = new BibTexGenerator();
         System.out.println(ref.getEntries());
-        model.addAttribute("bibtex", bg.generate(ref));
-        //String bibtex = gen.generate(uusi);
-        //model.addAttribute("reference", bibtex);
 
-        return "view";
+        return "redirect:/bibtex/" + ref.getId();
     }
 
-    @RequestMapping(value = "/bibtex/{referenceId}", method = RequestMethod.POST)
-    public String edit(Model model) {
-
+    @RequestMapping(value = "/bibtex/delete/{referenceId}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("referenceId") Long referenceId) {
+        referenceRepository.delete(referenceId);
         return "redirect:/bibtex/";
     }
+
+    @RequestMapping(value = "bibtex/edit/{referenceId}", method = RequestMethod.GET)
+    public String edit(@PathVariable("referenceId") Long referenceId, Model model) {
+        AbstractReference ref = referenceRepository.findOne(referenceId);
+        model.addAttribute("reference", ref);
+
+        return "edit";
+    }
+
+    @RequestMapping(value = "/bibtex/edit/{referenceId}", method = RequestMethod.POST)
+    public String change(@PathVariable("referenceId") Long referenceId, HttpServletRequest req) {
+        AbstractReference vanha = referenceRepository.findOne(referenceId);
+        Map<String, String[]> parameterMap = req.getParameterMap();
+        AbstractReference ref = referenceService.createReference(parameterMap);
+        vanha.setEntries((EnumMap) ref.getEntries());
+        vanha.setName(ref.getName());
+        referenceRepository.save(vanha);
+        return "redirect:/bibtex/"+referenceId;
+    }
+
 }

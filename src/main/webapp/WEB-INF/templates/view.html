@@ -2,11 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Handing Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <h1>Result</h1>
-<pre><code th:text="'bibtex: ' + ${bibtex}" > </code></pre>
+<pre><code th:text="'bibtex: ' + ${bibtex}"> </code></pre>
+<form th:method="get" th:object="${ref}" th:action="@{/bibtex/edit/{id}(id=${ref.id})}">
+    <input th:value="Edit" th:type="submit"/>
+</form>
+<form th:method="delete" th:object="${ref}" th:action="@{/bibtex/delete/{id}(id=${ref.id})}">
+    <input th:value="Delete" th:type="submit"/>
+</form>
 
 </body>
 </html>
