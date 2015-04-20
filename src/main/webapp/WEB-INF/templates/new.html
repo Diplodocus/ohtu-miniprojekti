@@ -7,30 +7,22 @@
 <body>
 <h1>New article reference</h1>
 
-<form action="#" th:action="@{/bibtex/add}" method="post">
+<form action="#" th:action="@{/bibtex/add}" method="post" th:object="${mappi}">
 
 
-    <p>Name: <input type="text" th:field="*{reference.name}"/></p>
+    <p>Name: <input type="text" th:field="${reference.name}"/></p>
 
-    <h4>mandatory:</h4>
-
-    <div th:each="row, stat : ${mandatory}">
-        <p><label th:text="${row.name}"></label>
-            <input type="text" th:value="${row.type}" th:field="*{reference.entries[__${row}__]}"
-                   th:id="*{reference.entries[__${row}__]}"/>
-        </p>
-    </div>
-    <h4>optional:</h4>
-
-    <div th:each="row, stat : ${mandatory}">
-        <p><label th:text="${row.name}"></label>
-            <input type="text" th:value="${row.type}" th:field="*{reference.entries[__${row}__]}"
-                   th:id="*{reference.entries[__${row}__]}"/>
+    <div th:each="entry : ${mappi}">
+        <p>
+            <label th:for="${entry.key}" th:text="${entry.key}"></label>
+            <input type="text" th:name="${entry.key}"/>
         </p>
     </div>
 
 
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
 </form>
+
+
 </body>
 </html>

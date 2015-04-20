@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by jani on 9.4.2015.
  */
-@Repository
+@Repository 
 public interface ReferenceRepository extends JpaRepository<AbstractReference, Long> {
 
 

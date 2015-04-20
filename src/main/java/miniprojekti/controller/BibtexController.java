@@ -8,15 +8,14 @@ package miniprojekti.controller;
 import miniprojekti.reference.*;
 import miniprojekti.reference.generate.BibTexGenerator;
 import miniprojekti.repository.ReferenceRepository;
+import miniprojekti.service.ReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +32,9 @@ public class BibtexController {
 
     @Autowired
     private ReferenceRepository referenceRepository;
+
+    @Autowired
+    private ReferenceService referenceService;
 
     @RequestMapping("/bibtex")
     public String list(Model model) {
@@ -73,9 +75,21 @@ public class BibtexController {
     }
 
     @RequestMapping("/bibtex/add")
-    public String addForm(Model model) {
-        ArticleReference article = new ArticleReference("uusi", new EnumMap<EntryType, String>(EntryType.class));
-        model.addAttribute("reference", article);
+    public String addForm(ModelMap model) {
+        EnumMap<EntryType, String> mappi = new EnumMap<EntryType, String>(EntryType.class);
+
+        ArticleReference article = new ArticleReference("uusi", mappi);
+
+        for(EntryType key:article.getMandatoryReferenceEntries()) {
+            mappi.put(key, null);
+        }
+        for(EntryType key:article.getOptionalReferenceEntries()) {
+            mappi.put(key, null);
+        }
+        article.setEntries(mappi);
+        System.out.println(article.getEntries().toString());
+        model.put("reference", article);
+        model.addAttribute("mappi", mappi);
         model.addAttribute("mandatory", article.getMandatoryReferenceEntries());
         model.addAttribute("optional", article.getOptionalReferenceEntries());
         return "new";
@@ -91,6 +105,11 @@ public class BibtexController {
             System.out.println(entry.getKey() + " = " + Arrays.toString(entry.getValue()));
         }
         BibTexGenerator gen = new BibTexGenerator();
+        AbstractReference ref = referenceService.createReference(parameterMap);
+        referenceRepository.save(ref);
+        BibTexGenerator bg = new BibTexGenerator();
+        System.out.println(ref.getEntries());
+        model.addAttribute("bibtex", bg.generate(ref));
         //String bibtex = gen.generate(uusi);
         //model.addAttribute("reference", bibtex);
 
