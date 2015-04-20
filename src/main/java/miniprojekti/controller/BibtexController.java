@@ -111,7 +111,7 @@ public class BibtexController {
 
         BibTexGenerator gen = new BibTexGenerator();
         AbstractReference ref = referenceService.createReference(parameterMap);
-        referenceRepository.save(ref);
+       // referenceRepository.save(ref);
         BibTexGenerator bg = new BibTexGenerator();
         System.out.println(ref.getEntries());
 
