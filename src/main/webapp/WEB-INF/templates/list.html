@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<head lang="en">
+    <title></title>
+</head>
+<body>
+
+<ul th:each="ref : ${lista}">
+    <li><a th:text="${ref.name}" th:href="@{/bibtex/{id}(id=${ref.id})}"></a></li>
+</ul>
+
+
+</body>
+</html>

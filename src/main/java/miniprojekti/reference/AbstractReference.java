@@ -1,27 +1,48 @@
 package miniprojekti.reference;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import javax.persistence.*;
 import java.util.*;
 
-import static miniprojekti.reference.BibTexType.ARTICLE;
-import static miniprojekti.reference.EntryType.*;
+import javax.persistence.Entity;
 
 /**
 
  */
-public class AbstractReference implements Reference {
+@Entity
+public class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
-    private final BibTexType type;
-    private final ArrayList<EntryType> mustHave;
-    private final ArrayList<EntryType> mayHave;
-    private String name;
-    protected EnumMap<EntryType, String> entries;
 
-    public AbstractReference(String name, EnumMap<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mustHave, ArrayList<EntryType> mayHave) {
+    private BibTexType type;
+
+    @ElementCollection
+    private List<EntryType> mandatoryReferenceEntries;
+
+    /* @ElementCollection(targetClass=EntryType.class)
+    @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
+    @CollectionTable(name="reference_type")
+    @Column(name="interest") // Column name in person_interest
+    Collection<EntryType> mustHave; */
+
+    @ElementCollection
+    private List<EntryType> optionalReferenceEntries;
+
+    private String name;
+
+    @ElementCollection
+    @MapKeyEnumerated(EnumType.STRING)
+    protected Map<EntryType, String> entries;
+
+    public AbstractReference(String name, Map<EntryType, String> entries, BibTexType type, ArrayList<EntryType> mandatoryReferenceEntries, ArrayList<EntryType> optionalReferenceEntries) {
         this.name = name;
         this.type = type;
-        this.mustHave = mustHave;
+        this.mandatoryReferenceEntries = mandatoryReferenceEntries;
         this.entries = entries;
-        this. mayHave = mayHave;
+        this.optionalReferenceEntries = optionalReferenceEntries;
+    }
+
+    public AbstractReference() {
     }
 
     /**
@@ -31,6 +52,12 @@ public class AbstractReference implements Reference {
     public String getName(){
         return name;
     }
+
+    /**
+     * Set name
+     * @param name
+     */
+    public void setName(String name) { this.name = name;}
 
     /**
      * @return type of the reference
@@ -46,7 +73,7 @@ public class AbstractReference implements Reference {
      */
     @Override
     public List<EntryType> getOptionalReferenceEntries() {
-        return mayHave;
+        return optionalReferenceEntries;
     }
 
     /**
@@ -55,7 +82,7 @@ public class AbstractReference implements Reference {
      */
     @Override
     public List<EntryType> getMandatoryReferenceEntries() {
-        return mustHave;
+        return mandatoryReferenceEntries;
     }
 
     /**

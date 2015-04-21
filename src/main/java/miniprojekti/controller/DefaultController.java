@@ -21,16 +21,16 @@ public class DefaultController {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping("/")
+    @RequestMapping("*")
     public String listPeople(Model model) {
 
-        Person p = new Person();
-        p.setFirstName("Torsti");
-        p.setLastName("Torstai");
-        model.addAttribute("torsti", p);
-        model.addAttribute("peopleList", personService.listPeople());
+//        Person p = new Person();
+//        p.setFirstName("Torsti");
+//        p.setLastName("Torstai");
+//        model.addAttribute("torsti", p);
+//        model.addAttribute("peopleList", personService.listPeople());
 
-        return "people";
+        return "redirect:/bibtex";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

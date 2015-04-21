@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>New article reference</h1>
+
+<form action="#" th:action="@{/bibtex/add}" method="post" th:object="${mappi}">
+
+
+    <p>Name: <input type="text" th:field="${reference.name}"/></p>
+
+    <div th:each="entry : ${mappi}">
+        <p>
+            <label th:for="${entry.key}" th:text="${entry.key}"></label>
+            <input type="text" th:name="${entry.key}"/>
+        </p>
+    </div>
+
+
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset" name = "reset"/></p>
+</form>
+
+
+</body>
+</html>
