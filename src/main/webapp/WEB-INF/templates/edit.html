@@ -7,7 +7,7 @@
 <body>
 <h1>New article reference</h1>
 
-<form action="#" th:action="@{/bibtex/add}" method="post" th:object="${reference}">
+<form action="#" th:action="@{/bibtex/edit/{id}(id=${reference.id})}" method="post" th:object="${reference}">
 
 
     <p>Name: <input type="text" th:field="${reference.name}"/></p>
