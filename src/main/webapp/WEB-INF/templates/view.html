@@ -13,6 +13,8 @@
 <form th:method="delete" th:object="${ref}" th:action="@{/bibtex/delete/{id}(id=${ref.id})}">
     <input th:value="Delete" th:type="submit"/>
 </form>
+<p></p>
+<a th:href="@{/bibtex}" >Etusivulle</a>
 
 </body>
 </html>
