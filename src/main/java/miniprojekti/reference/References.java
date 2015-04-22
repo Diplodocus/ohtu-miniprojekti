@@ -22,14 +22,4 @@ public class References {
     public ArrayList<Reference> getReferences(){
         return references;
     }
-//
-//    public ArrayList<Reference> getReferences(BibTexType type){
-//        ArrayList<Reference> referenceOfType = new ArrayList<Reference>();
-//        for (Reference reference : references) {
-//            if (reference.getType() == type){
-//                referenceOfType.add(reference);
-//            }
-//        }
-//        return referenceOfType;
-//    }
 }
