@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 
  */
 @Entity
-public class AbstractReference extends AbstractPersistable<Long> implements Reference {
+public abstract class AbstractReference extends AbstractPersistable<Long> implements Reference {
     //TODO Halutaanko interface abstract classin lisäksi
 
     private BibTexType type;
@@ -102,4 +102,6 @@ public class AbstractReference extends AbstractPersistable<Long> implements Refe
     public void setEntries(EnumMap<EntryType, String> entries) {
         this.entries = entries;
     }
+
+    public abstract List validate();
 }

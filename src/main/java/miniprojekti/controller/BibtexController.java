@@ -95,10 +95,15 @@ public class BibtexController {
     public String add(HttpServletRequest req, Model model) {
         Map<String, String[]> parameterMap = req.getParameterMap();
 
-        BibTexGenerator gen = new BibTexGenerator();
         AbstractReference ref = referenceService.createReference(parameterMap);
+        List<String> err = ref.validate();
+        System.out.println("ERR : " + err);
+        if(!err.isEmpty()) {
+            model.addAttribute("reference", ref);
+            model.addAttribute("errors", err);
+            return "new";
+        }
         referenceRepository.save(ref);
-        BibTexGenerator bg = new BibTexGenerator();
 
         return "redirect:/bibtex/" + ref.getId();
     }

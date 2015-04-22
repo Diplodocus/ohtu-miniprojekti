@@ -9,13 +9,16 @@
 
 <form action="#" th:action="@{/bibtex/add}" method="post" th:object="${mappi}">
 
+    <div th:each="error : ${errors}">
+        <span th:text="${error}"></span>
+    </div>
 
     <p>Name: <input type="text" th:field="${reference.name}"/></p>
 
-    <div th:each="entry : ${mappi}">
+    <div th:each="entry : ${reference.entries}">
         <p>
             <label th:for="${entry.key}" th:text="${entry.key}"></label>
-            <input type="text" th:name="${entry.key}"/>
+            <input type="text" th:name="${entry.key}" th:value="${entry.value}"/>
         </p>
     </div>
 
