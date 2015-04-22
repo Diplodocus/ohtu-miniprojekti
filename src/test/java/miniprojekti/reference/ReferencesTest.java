@@ -7,14 +7,13 @@ package miniprojekti.reference;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-import org.junit.After;
-import org.junit.AfterClass;
+
+import miniprojekti.enums.EntryType;
+import miniprojekti.reference.entity.ArticleReference;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static miniprojekti.reference.EntryType.*;
-import static miniprojekti.reference.BibTexType.*;
+import static miniprojekti.enums.EntryType.*;
 
 /**
  *
@@ -25,12 +24,12 @@ public class ReferencesTest {
     References references;
     ArticleReference reference1;
     ArticleReference reference2;
-    ArrayList<Reference> list;
+    ArrayList<ReferenceInterface> list;
 
     @Before
     public void setUp() {
         references = new References();
-        list = new ArrayList<Reference>();
+        list = new ArrayList<ReferenceInterface>();
 
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
@@ -53,7 +52,7 @@ public class ReferencesTest {
         references.addReference(reference1);
         list.add(reference1);
 
-        assertEquals(references.getReferences(), list);
+        assertEquals(references.getReferenceInterfaces(), list);
 
     }
 
@@ -64,7 +63,7 @@ public class ReferencesTest {
         references.addReference(reference2);
         references.removeReference(reference1);
 
-        assertEquals(references.getReferences(), list);
+        assertEquals(references.getReferenceInterfaces(), list);
     }
 
 

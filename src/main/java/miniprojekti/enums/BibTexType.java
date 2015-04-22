@@ -1,4 +1,4 @@
-package miniprojekti.reference;
+package miniprojekti.enums;
 
 /**
  *

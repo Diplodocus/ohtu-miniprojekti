@@ -6,12 +6,12 @@
 </head>
 <body>
 <h1>Tervetuloa</h1>
-<p>Tervetuloa Diplodocukses bibtex generaattoriin. Alta löydät kaikki jo luodut bibtextit ja sivun alareunasta löydät linkin uuden lisäämiseen. </p>
+<p>Tervetuloa Diplodocuksen bibtex generaattoriin. Alta löydät kaikki jo luodut bibtextit ja sivun alareunasta löydät linkin uuden lisäämiseen. </p>
 <h2></h2>
 <ul th:each="ref : ${lista}">
     <li><a th:text="${ref.name}" th:href="@{/bibtex/{id}(id=${ref.id})}"></a></li>
 </ul>
-<a href = "bibtex/add" >Lisää uusi</a>
+<a href = "/add" th:href="@{bibtex/add}">Lisää uusi </a>
 
 
 </body>

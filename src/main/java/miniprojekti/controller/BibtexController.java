@@ -5,24 +5,20 @@
  */
 package miniprojekti.controller;
 
-import miniprojekti.reference.*;
-import miniprojekti.reference.generate.BibTexGenerator;
+import miniprojekti.reference.entity.AbstractReference;
+import miniprojekti.reference.entity.ArticleReference;
+import miniprojekti.enums.EntryType;
+import miniprojekti.service.BibTexGenerator;
 import miniprojekti.repository.ReferenceRepository;
 import miniprojekti.service.ReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.*;
-
-import static miniprojekti.reference.EntryType.*;
-import static miniprojekti.reference.BibTexType.*;
 
 /**
  * @author vrsaari

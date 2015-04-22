@@ -18,6 +18,6 @@ public class DefaultController {
 
     @RequestMapping("*")
     public String redirectingToBibtex() {
-        return "redirect:/bibtex/add";
+        return "redirect:/bibtex";
     }
 }

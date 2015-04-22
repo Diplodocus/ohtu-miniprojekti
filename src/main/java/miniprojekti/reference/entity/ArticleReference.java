@@ -1,10 +1,13 @@
-package miniprojekti.reference;
+package miniprojekti.reference.entity;
+
+import miniprojekti.enums.EntryType;
+import miniprojekti.reference.entity.AbstractReference;
 
 import javax.persistence.Entity;
 import java.util.*;
 
-import static miniprojekti.reference.BibTexType.*;
-import static miniprojekti.reference.EntryType.*;
+import static miniprojekti.enums.BibTexType.*;
+import static miniprojekti.enums.EntryType.*;
 
 /**
 

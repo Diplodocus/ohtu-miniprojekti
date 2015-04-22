@@ -1,14 +1,13 @@
 package miniprojekti.service;
 
-import miniprojekti.reference.AbstractReference;
-import miniprojekti.reference.ArticleReference;
-import miniprojekti.reference.EntryType;
+import miniprojekti.reference.entity.AbstractReference;
+import miniprojekti.reference.entity.ArticleReference;
+import miniprojekti.enums.EntryType;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by vrsaari on 20/04/15.

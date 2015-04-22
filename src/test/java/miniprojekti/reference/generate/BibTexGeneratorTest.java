@@ -1,8 +1,9 @@
 package miniprojekti.reference.generate;
 
-import miniprojekti.reference.ArticleReference;
-import miniprojekti.reference.EntryType;
-import miniprojekti.reference.Reference;
+import miniprojekti.reference.entity.ArticleReference;
+import miniprojekti.enums.EntryType;
+import miniprojekti.reference.ReferenceInterface;
+import miniprojekti.service.BibTexGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,16 +11,16 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
-import static miniprojekti.reference.EntryType.*;
+import static miniprojekti.enums.EntryType.*;
 
 /**
 
  */
 public class BibTexGeneratorTest {
-    private Reference testReference1;
-    private Reference testReference2;
+    private ReferenceInterface testReferenceInterface1;
+    private ReferenceInterface testReferenceInterface2;
     private BibTexGenerator generator;
-    private ArrayList<Reference> testReferences;
+    private ArrayList<ReferenceInterface> testReferenceInterfaces;
 
     /* example:
     @article{SS86,
@@ -36,25 +37,25 @@ public class BibTexGeneratorTest {
     @Before
     public void setUp(){
         generator = new BibTexGenerator();
-        testReference1 = makeRef1();
-        testReference2 = makeRef2();
-        testReferences= new ArrayList<Reference>();
-        testReferences.add(testReference1);
-        testReferences.add(testReference2);
+        testReferenceInterface1 = makeRef1();
+        testReferenceInterface2 = makeRef2();
+        testReferenceInterfaces = new ArrayList<ReferenceInterface>();
+        testReferenceInterfaces.add(testReferenceInterface1);
+        testReferenceInterfaces.add(testReferenceInterface2);
     }
 
 
 
     @Test
     public void generatorTest(){
-        assertEquals("The generated file should look like the example",ref1Output(), generator.generate(testReference1) );
-        assertEquals("The generated file should look like the example",ref2Output(), generator.generate(testReference2) );
+        assertEquals("The generated file should look like the example",ref1Output(), generator.generate(testReferenceInterface1) );
+        assertEquals("The generated file should look like the example",ref2Output(), generator.generate(testReferenceInterface2) );
     }
 
     @Test
     public void generateAllTest(){
 
-        assertEquals("should generate all", allBibTex(), generator.generateAll(testReferences));
+        assertEquals("should generate all", allBibTex(), generator.generateAll(testReferenceInterfaces));
     }
 
 
@@ -86,7 +87,7 @@ public class BibTexGeneratorTest {
         return testBibTex;
     }
 
-    private Reference makeRef1(){
+    private ReferenceInterface makeRef1(){
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
@@ -101,7 +102,7 @@ public class BibTexGeneratorTest {
     }
 
 
-    private Reference makeRef2(){
+    private ReferenceInterface makeRef2(){
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "me");

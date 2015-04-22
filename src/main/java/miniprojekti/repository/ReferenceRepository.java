@@ -1,7 +1,6 @@
 package miniprojekti.repository;
 
-import miniprojekti.reference.AbstractReference;
-import miniprojekti.reference.Reference;
+import miniprojekti.reference.entity.AbstractReference;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

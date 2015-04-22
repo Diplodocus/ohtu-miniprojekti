@@ -1,6 +1,7 @@
 package miniprojekti.reference;
 
-import miniprojekti.reference.generate.BibTexGenerator;
+import miniprojekti.enums.BibTexType;
+import miniprojekti.enums.EntryType;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Map;
 
  */
 
-public interface Reference {
+public interface ReferenceInterface {
 
 
     /*
@@ -36,4 +37,5 @@ public interface Reference {
 
 
     void setEntries(EnumMap<EntryType, String> entries);
+
 }

@@ -8,16 +8,16 @@ package miniprojekti.reference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
-import org.junit.After;
-import org.junit.AfterClass;
+
+import miniprojekti.enums.EntryType;
+import miniprojekti.reference.entity.ArticleReference;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static miniprojekti.reference.EntryType.*;
-import static miniprojekti.reference.BibTexType.*;
+import static miniprojekti.enums.EntryType.*;
+import static miniprojekti.enums.BibTexType.*;
 
-public class ArticleReferenceTest {
+public class ArticleReferenceInterfaceTest {
 
     ArticleReference articleReference;
     ArticleReference articleReference2;

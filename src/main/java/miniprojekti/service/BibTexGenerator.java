@@ -1,7 +1,7 @@
-package miniprojekti.reference.generate;
+package miniprojekti.service;
 
-import miniprojekti.reference.EntryType;
-import miniprojekti.reference.Reference;
+import miniprojekti.enums.EntryType;
+import miniprojekti.reference.ReferenceInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,19 +15,19 @@ public class BibTexGenerator {
 
     /**
      * Generates the bibTex as a String from a reference
-     * @param reference reference to be generated
+     * @param referenceInterface reference to be generated
      * @return reference as bibTex string
      */
-    public String generate(Reference reference){
+    public String generate(ReferenceInterface referenceInterface){
         StringBuilder bibTex = new StringBuilder();
         bibTex.append("@")
-                .append(reference.getType().getName())
+                .append(referenceInterface.getType().getName())
                 .append("{")
-                .append(reference.getName());
+                .append(referenceInterface.getName());
 
-        for (EntryType part : reference.getEntries().keySet()) {
+        for (EntryType part : referenceInterface.getEntries().keySet()) {
             bibTex.append(",\n");
-            generateLine(part.getName(), reference.getEntries().get(part), bibTex);
+            generateLine(part.getName(), referenceInterface.getEntries().get(part), bibTex);
         }
 
         bibTex.append("\n}\n");
@@ -35,13 +35,13 @@ public class BibTexGenerator {
 
     }
 
-    public String generateAll(ArrayList<Reference> references){
+    public String generateAll(ArrayList<ReferenceInterface> referenceInterfaces){
 
         StringBuilder wholeBibTex = new StringBuilder();
         BibTexGenerator generator = new BibTexGenerator();
         //generates a long string with all the bibTex parts in it
-        for (Reference reference : references) {
-            wholeBibTex.append(generator.generate(reference));
+        for (ReferenceInterface referenceInterface : referenceInterfaces) {
+            wholeBibTex.append(generator.generate(referenceInterface));
             wholeBibTex.append("\n");
 
         }
