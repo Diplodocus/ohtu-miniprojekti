@@ -1,4 +1,4 @@
-package miniprojekti.Domain;
+package miniprojekti.domain;
 
 import miniprojekti.enums.BibTexType;
 import miniprojekti.enums.EntryType;

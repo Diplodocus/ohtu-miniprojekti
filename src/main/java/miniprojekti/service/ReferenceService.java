@@ -1,7 +1,7 @@
 package miniprojekti.service;
 
-import miniprojekti.Domain.AbstractReference;
-import miniprojekti.Domain.ArticleReference;
+import miniprojekti.domain.AbstractReference;
+import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
 import org.springframework.stereotype.Service;
 

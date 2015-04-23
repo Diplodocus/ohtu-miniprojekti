@@ -5,8 +5,8 @@
  */
 package miniprojekti.controller;
 
-import miniprojekti.Domain.AbstractReference;
-import miniprojekti.Domain.ArticleReference;
+import miniprojekti.domain.AbstractReference;
+import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
 import miniprojekti.service.BibTexGenerator;
 import miniprojekti.repository.ReferenceRepository;

@@ -5,7 +5,7 @@ import miniprojekti.enums.EntryType;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import miniprojekti.Domain.ReferenceInterface;
+import miniprojekti.domain.ReferenceInterface;
 
 /**
 

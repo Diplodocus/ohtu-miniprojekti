@@ -5,6 +5,7 @@
  */
 package miniprojekti.Domain;
 
+import miniprojekti.domain.ArticleReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;

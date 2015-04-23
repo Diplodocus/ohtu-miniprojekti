@@ -1,6 +1,6 @@
 package miniprojekti.service;
 
-import miniprojekti.Domain.AbstractReference;
+import miniprojekti.domain.AbstractReference;
 import miniprojekti.enums.EntryType;
 import miniprojekti.repository.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import miniprojekti.Domain.ArticleReference;
+import miniprojekti.domain.ArticleReference;
 
 /**
  * Created by tixtixti on 23.4.15.
