@@ -1,8 +1,7 @@
-package miniprojekti.reference.entity;
+package miniprojekti.Domain;
 
 import miniprojekti.enums.BibTexType;
 import miniprojekti.enums.EntryType;
-import miniprojekti.reference.ReferenceInterface;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -49,7 +48,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
     }
 
     /**
-     * @return name of the reference
+     * @return name of the Domain
      */
     @Override
     public String getName(){
@@ -63,7 +62,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
     public void setName(String name) { this.name = name;}
 
     /**
-     * @return type of the reference
+     * @return type of the Domain
      */
     @Override
     public BibTexType getType() {
@@ -72,7 +71,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     /**
      *
-     * @return the entries that my be added to the reference
+     * @return the entries that my be added to the Domain
      */
     @Override
     public List<EntryType> getOptionalReferenceEntries() {
@@ -81,7 +80,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     /**
      *
-     * @return the entries that must be added to the reference
+     * @return the entries that must be added to the Domain
      */
     @Override
     public List<EntryType> getMandatoryReferenceEntries() {
@@ -90,7 +89,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     /**
      *
-     * @return the entries of the reference
+     * @return the entries of the Domain
      */
     @Override
     public Map<EntryType, String> getEntries() {
@@ -99,7 +98,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     /**
      *
-     * @param entries new entries for the reference
+     * @param entries new entries for the Domain
      */
     @Override
     public void setEntries(EnumMap<EntryType, String> entries) {
