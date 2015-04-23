@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package miniprojekti.reference;
+package miniprojekti.Domain;
 
+import miniprojekti.domain.ArticleReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 
 import miniprojekti.enums.EntryType;
-import miniprojekti.reference.entity.ArticleReference;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

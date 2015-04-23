@@ -1,10 +1,11 @@
 package miniprojekti.service;
 
 import miniprojekti.enums.EntryType;
-import miniprojekti.reference.ReferenceInterface;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import miniprojekti.domain.ReferenceInterface;
 
 /**
 

@@ -1,8 +1,8 @@
-package miniprojekti.reference.generate;
+package miniprojekti.Domain.generate;
 
-import miniprojekti.reference.entity.ArticleReference;
+import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
-import miniprojekti.reference.ReferenceInterface;
+import miniprojekti.domain.ReferenceInterface;
 import miniprojekti.service.BibTexGenerator;
 import org.junit.Before;
 import org.junit.Test;
