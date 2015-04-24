@@ -1,5 +1,6 @@
 package miniprojekti.domain.generate;
 
+import miniprojekti.domain.AbstractReference;
 import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
 import miniprojekti.domain.ReferenceInterface;
@@ -17,10 +18,10 @@ import static miniprojekti.enums.EntryType.*;
 
  */
 public class BibTexGeneratorTest {
-    private ReferenceInterface testReferenceInterface1;
-    private ReferenceInterface testReferenceInterface2;
+    private AbstractReference testReferenceInterface1;
+    private AbstractReference testReferenceInterface2;
     private BibTexGenerator generator;
-    private ArrayList<ReferenceInterface> testReferenceInterfaces;
+    private ArrayList<AbstractReference> testReferenceInterfaces;
 
     /* example:
     @article{SS86,
@@ -39,7 +40,7 @@ public class BibTexGeneratorTest {
         generator = new BibTexGenerator();
         testReferenceInterface1 = makeRef1();
         testReferenceInterface2 = makeRef2();
-        testReferenceInterfaces = new ArrayList<ReferenceInterface>();
+        testReferenceInterfaces = new ArrayList<AbstractReference>();
         testReferenceInterfaces.add(testReferenceInterface1);
         testReferenceInterfaces.add(testReferenceInterface2);
     }
@@ -87,7 +88,7 @@ public class BibTexGeneratorTest {
         return testBibTex;
     }
 
-    private ReferenceInterface makeRef1(){
+    private AbstractReference makeRef1(){
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
@@ -102,7 +103,7 @@ public class BibTexGeneratorTest {
     }
 
 
-    private ReferenceInterface makeRef2(){
+    private AbstractReference makeRef2(){
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "me");

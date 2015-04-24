@@ -81,8 +81,8 @@ public class BibtexService {
     }
 
     public void viewAllBibtex(Model model){
-        BibTexGenerator vlle = new BibTexGenerator();
+        BibTexGenerator gen = new BibTexGenerator();
         List<AbstractReference> refList= referenceRepository.findAll();
-        model.addAttribute("markku",vlle.generateAll(refList));
+        model.addAttribute("bibtex",gen.generateAll(refList));
     }
 }

@@ -22,7 +22,7 @@ public class BibTexGenerator {
      * @param referenceInterface reference to be generated
      * @return reference as bibTex string
      */
-    public String generate(ReferenceInterface referenceInterface){
+    public String generate(AbstractReference referenceInterface){
         StringBuilder bibTex = new StringBuilder();
         bibTex.append("@")
                 .append(referenceInterface.getType().getName())
@@ -39,16 +39,17 @@ public class BibTexGenerator {
 
     }
 
-    public String generateAll(List<ReferenceInterface> referenceInterfaces){
+    public String generateAll(List<AbstractReference> referenceInterfaces){
 
         StringBuilder wholeBibTex = new StringBuilder();
         BibTexGenerator generator = new BibTexGenerator();
         //generates a long string with all the bibTex parts in it
-        for (ReferenceInterface referenceInterface : referenceInterfaces) {
+        for (AbstractReference referenceInterface : referenceInterfaces) {
             wholeBibTex.append(generator.generate(referenceInterface));
             wholeBibTex.append("\n");
 
         }
+        System.out.print(wholeBibTex.toString());
         return wholeBibTex.toString();
     }
 
