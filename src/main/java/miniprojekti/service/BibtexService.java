@@ -1,6 +1,7 @@
 package miniprojekti.service;
 
 import miniprojekti.domain.AbstractReference;
+import miniprojekti.domain.ReferenceInterface;
 import miniprojekti.enums.EntryType;
 import miniprojekti.repository.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import miniprojekti.domain.ArticleReference;
 /**
  * Created by tixtixti on 23.4.15.
  */
-@Service
+@Service("ServiceName")
 public class BibtexService {
 
     @Autowired
@@ -77,5 +78,11 @@ public class BibtexService {
             }
         }
         model.addAttribute("lista", references);
+    }
+
+    public void viewAllBibtex(Model model){
+        BibTexGenerator gen = new BibTexGenerator();
+        List<AbstractReference> refList= referenceRepository.findAll();
+        model.addAttribute("bibtex",gen.generateAll(refList));
     }
 }
