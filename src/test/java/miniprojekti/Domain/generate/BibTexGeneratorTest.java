@@ -3,7 +3,6 @@ package miniprojekti.domain.generate;
 import miniprojekti.domain.AbstractReference;
 import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
-import miniprojekti.domain.ReferenceInterface;
 import miniprojekti.service.BibTexGenerator;
 import org.junit.Before;
 import org.junit.Test;
