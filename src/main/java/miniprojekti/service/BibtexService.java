@@ -18,7 +18,7 @@ import miniprojekti.domain.ArticleReference;
 /**
  * Created by tixtixti on 23.4.15.
  */
-@Service
+@Service("ServiceName")
 public class BibtexService {
 
     @Autowired
@@ -77,5 +77,13 @@ public class BibtexService {
             }
         }
         model.addAttribute("lista", references);
+    }
+
+    public void viewAllBibtex(Model model){
+        List<AbstractReference> refList= referenceRepository.findAll();
+        for(AbstractReference ref : refList){
+            model.addAttribute("bibtex", new BibTexGenerator().generate(ref));
+            model.addAttribute("ref", ref);
+        }
     }
 }
