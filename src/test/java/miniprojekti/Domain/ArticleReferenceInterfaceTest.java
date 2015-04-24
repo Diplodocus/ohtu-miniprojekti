@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package miniprojekti.Domain;
+package miniprojekti.domain;
 
-import miniprojekti.domain.ArticleReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;

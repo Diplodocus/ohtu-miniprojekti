@@ -1,4 +1,4 @@
-package miniprojekti.Domain.generate;
+package miniprojekti.domain.generate;
 
 import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;

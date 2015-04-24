@@ -24,7 +24,7 @@ public interface ReferenceInterface {
      */
     BibTexType getType();
     /*
-      2 Lists of enums what data this kind of Domain must an can contain
+      2 Lists of enums what data this kind of domain must an can contain
      */
     List<EntryType> getOptionalReferenceEntries();
     List<EntryType> getMandatoryReferenceEntries();
