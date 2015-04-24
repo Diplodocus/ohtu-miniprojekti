@@ -119,7 +119,7 @@ public class BibtexController {
 
        bes.viewAllBibtex(model);
 
-        return "view";
+        return "all";
     }
 
 }

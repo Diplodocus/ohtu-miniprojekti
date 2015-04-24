@@ -1,10 +1,13 @@
 package miniprojekti.service;
 
+import miniprojekti.domain.AbstractReference;
 import miniprojekti.enums.EntryType;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import miniprojekti.domain.ReferenceInterface;
 
 /**
@@ -36,7 +39,7 @@ public class BibTexGenerator {
 
     }
 
-    public String generateAll(ArrayList<ReferenceInterface> referenceInterfaces){
+    public String generateAll(List<ReferenceInterface> referenceInterfaces){
 
         StringBuilder wholeBibTex = new StringBuilder();
         BibTexGenerator generator = new BibTexGenerator();
