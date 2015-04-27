@@ -1,7 +1,6 @@
-package miniprojekti.reference.entity;
+package miniprojekti.domain;
 
 import miniprojekti.enums.EntryType;
-import miniprojekti.reference.entity.AbstractReference;
 
 import javax.persistence.Entity;
 import java.util.*;

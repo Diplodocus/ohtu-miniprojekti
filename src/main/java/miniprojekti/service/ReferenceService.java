@@ -1,8 +1,8 @@
 package miniprojekti.service;
 
 import java.nio.charset.StandardCharsets;
-import miniprojekti.reference.entity.AbstractReference;
-import miniprojekti.reference.entity.ArticleReference;
+import miniprojekti.domain.AbstractReference;
+import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
 import org.springframework.stereotype.Service;
 
