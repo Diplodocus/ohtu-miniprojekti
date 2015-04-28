@@ -32,7 +32,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     private String name;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @MapKeyEnumerated(EnumType.STRING)
     protected Map<EntryType, String> entries;
 
