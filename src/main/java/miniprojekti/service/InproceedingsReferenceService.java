@@ -1,7 +1,7 @@
 package miniprojekti.service;
 
 import miniprojekti.domain.AbstractReference;
-import miniprojekti.domain.BookReference;
+import miniprojekti.domain.InproceedingsReference;
 import miniprojekti.enums.EntryType;
 
 import java.util.EnumMap;
@@ -16,7 +16,7 @@ public class InproceedingsReferenceService extends ReferenceService {
     }
     @Override
     AbstractReference referenssi(EnumMap<EntryType, String> mappi) {
-        return new BookReference("uusi",mappi);
+        return new InproceedingsReference("uusi",mappi);
     }
 }
 
