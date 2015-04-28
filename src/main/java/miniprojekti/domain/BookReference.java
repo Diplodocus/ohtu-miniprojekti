@@ -23,7 +23,7 @@ public class BookReference extends AbstractReference{
         super(name, entries
                 , BOOK
                 , new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, PUBLISHER, YEAR))
-                , new ArrayList<EntryType>(Arrays.asList(NUMBER, VOLUME,SERIES,ADDRESS,MONTH,NOTE,KEY)));
+                , new ArrayList<EntryType>(Arrays.asList(NUMBER, VOLUME,SERIES,ADDRESS, EDITION,MONTH,NOTE,KEY)));
     }
 
 
