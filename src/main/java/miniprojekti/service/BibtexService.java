@@ -22,9 +22,12 @@ public class BibtexService {
 
     @Autowired
     private ReferenceRepository referenceRepository;
-
     @Autowired
     private ArticleReferenceService articleReferenceService;
+    @Autowired
+    private BookReferenceService bookReferenceService;
+    @Autowired
+    private InproceedingsReferenceService inproceedingsReferenceService;
 
     public void editReference( Long referenceId, HttpServletRequest req){
         AbstractReference vanha = referenceRepository.findOne(referenceId);
