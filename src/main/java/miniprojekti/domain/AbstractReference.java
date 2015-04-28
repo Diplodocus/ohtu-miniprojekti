@@ -18,7 +18,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
 
     private BibTexType type;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<EntryType> mandatoryReferenceEntries;
 
     /* @ElementCollection(targetClass=EntryType.class)
@@ -27,7 +27,7 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
     @Column(name="interest") // Column name in person_interest
     Collection<EntryType> mustHave; */
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<EntryType> optionalReferenceEntries;
 
     private String name;
