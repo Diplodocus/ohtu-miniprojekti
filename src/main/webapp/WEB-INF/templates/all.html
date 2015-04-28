@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bibtex generator - List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Result</h1>
+<pre><code th:text="'bibtex: ' + ${bibtex}"> </code></pre>
+<p></p>
+<a th:href="@{/bibtex}" >Etusivulle</a>
+
+</body>
+</html>

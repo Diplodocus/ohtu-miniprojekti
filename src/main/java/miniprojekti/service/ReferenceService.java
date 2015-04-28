@@ -30,6 +30,7 @@ public abstract class ReferenceService {
                 mappi.put(EntryType.valueOf(entry.getKey()), new String(entry.getValue()[0].getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             }
         }
+        article.setName(mappi.get(EntryType.AUTHOR) + mappi.get(EntryType.YEAR));
         article.setEntries(mappi);
         return article;
     }

@@ -126,4 +126,12 @@ public class BibtexController {
         return "redirect:/bibtex/"+referenceId;
     }
 
+    @RequestMapping("/bibtex/all")
+    public String view(Model model) {
+
+        bibtexService.viewAllBibtex(model);
+
+        return "all";
+    }
+
 }

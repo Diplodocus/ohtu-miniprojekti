@@ -58,6 +58,8 @@ public class BookReference extends AbstractReference{
         }
         if(this.entries.get(YEAR).length()<=0) {
             err.add("Year is a mandatory field.");
+        } else if(!this.entries.get(YEAR).matches("^\\d{4}$")) {
+            err.add("Year must be in format \'yyyy\'");
         }
 
 
