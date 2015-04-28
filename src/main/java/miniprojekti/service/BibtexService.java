@@ -1,6 +1,8 @@
 package miniprojekti.service;
 
 import miniprojekti.domain.AbstractReference;
+import miniprojekti.domain.BookReference;
+import miniprojekti.domain.InproceedingsReference;
 import miniprojekti.enums.EntryType;
 import miniprojekti.repository.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,12 @@ public class BibtexService {
 
     @Autowired
     private ReferenceRepository referenceRepository;
-
     @Autowired
     private ArticleReferenceService articleReferenceService;
+    @Autowired
+    private BookReferenceService bookReferenceService;
+    @Autowired
+    private InproceedingsReferenceService inproceedingsReferenceService;
 
     public void editReference( Long referenceId, HttpServletRequest req){
         AbstractReference vanha = referenceRepository.findOne(referenceId);
@@ -37,13 +42,25 @@ public class BibtexService {
 
     /**
      * Lisää Referencen tietokantaan, palauttaa long ID, jos kaikki meni hyvin ja LONG maxValue jos oli virheitä
+     * !!! Saa tällä hetkellä Contollerilta "type" nimisen Stringin ja luo viitteen sen tiedon pohjalta.
      * @param req
      * @param model
      * @return
      */
-    public Long addReference(HttpServletRequest req, Model model) {
+    public Long addReference(String type, HttpServletRequest req, Model model) {
         Map<String, String[]> parameterMap = req.getParameterMap();
-        AbstractReference ref = articleReferenceService.createReference(parameterMap);
+
+        AbstractReference ref = null;
+
+        if(type.equals("article")){
+            ref = articleReferenceService.createReference(parameterMap);
+
+        } else if (type.equals("book")){
+            ref = bookReferenceService.createReference(parameterMap);
+        } else {
+            ref = inproceedingsReferenceService.createReference(parameterMap);
+        }
+
         List<String> err = ref.validate();
         if(!err.isEmpty()) {
             model.addAttribute("reference", ref);

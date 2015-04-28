@@ -3,6 +3,7 @@ package miniprojekti.domain;
 import miniprojekti.enums.BibTexType;
 import miniprojekti.enums.EntryType;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import static miniprojekti.enums.EntryType.*;
 /**
  * Created by cec on 28.4.2015.
  */
+@Entity
 public class InproceedingsReference extends AbstractReference{
 
 
@@ -22,6 +24,9 @@ public class InproceedingsReference extends AbstractReference{
                 , INPROCEEDINGS
                 , new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, BOOKTITLE, YEAR))
                 , new ArrayList<EntryType>(Arrays.asList(EDITOR, VOLUME, NUMBER, SERIES, PAGES, ADDRESS, MONTH, ORGANIZATION, PUBLISHER, NOTE, KEY)));
+    }
+    public InproceedingsReference(){
+        super();
     }
 
         /*
