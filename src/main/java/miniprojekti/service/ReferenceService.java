@@ -1,5 +1,6 @@
 package miniprojekti.service;
 
+import java.nio.charset.StandardCharsets;
 import miniprojekti.domain.AbstractReference;
 import miniprojekti.domain.ArticleReference;
 import miniprojekti.enums.EntryType;
@@ -25,10 +26,10 @@ public class ReferenceService {
 
             System.out.println(entry.getKey() + " = " + Arrays.toString(entry.getValue()));
             if(entry.getKey().equals("name")) {
-                article.setName(entry.getValue()[0]);
+                article.setName(new String(entry.getValue()[0].getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             } else{
                 System.out.println(EntryType.valueOf(entry.getKey()));
-                mappi.put(EntryType.valueOf(entry.getKey()), entry.getValue()[0]);
+                mappi.put(EntryType.valueOf(entry.getKey()), new String(entry.getValue()[0].getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             }
         }
         article.setEntries(mappi);
