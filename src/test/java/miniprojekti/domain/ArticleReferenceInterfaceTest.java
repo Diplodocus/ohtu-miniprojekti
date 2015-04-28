@@ -48,17 +48,17 @@ public class ArticleReferenceInterfaceTest {
     }
 
     @Test
-    public void setNameTest() {
+    public void setNameForArticleReference() {
         assertEquals("SS86", articleReference.getName());
     }
 
     @Test
-    public void typeIsSetToArticle() {
+    public void referenceTypeIsSetToArticle() {
         assertEquals(ARTICLE, articleReference.getType());
     }
 
     @Test
-    public void mandatoryReferenceEntriesSetCorrectly() {
+    public void mandatoryReferenceEntriesForArticleSetCorrectly() {
 
         ArrayList<EntryType> mandatoryList;
         mandatoryList = new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, JOURNAL, YEAR, VOLUME));
@@ -67,7 +67,7 @@ public class ArticleReferenceInterfaceTest {
     }
 
     @Test
-    public void optionalReferenceEntriesSetCorrectly() {
+    public void optionalReferenceEntriesForArticleSetCorrectly() {
         ArrayList<EntryType> optionalList;
         optionalList = new ArrayList<EntryType>(Arrays.asList(NUMBER, PAGES, MONTH, NOTE, KEY));
 
@@ -75,13 +75,7 @@ public class ArticleReferenceInterfaceTest {
     }
 
     @Test
-    public void settingEntriesWorks() {
-        EnumMap<EntryType, String> entries;
-        entries = new EnumMap<EntryType, String>(EntryType.class);
-        entries.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
-        entries.put(TITLE, "Novice mistakes: are the folk wisdoms correct?");
-
-        articleReference = new ArticleReference("SS86", entries);
+    public void settingEntriesForArticleWorks() {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
