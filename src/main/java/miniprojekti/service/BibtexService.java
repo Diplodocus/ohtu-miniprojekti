@@ -24,26 +24,26 @@ public class BibtexService {
     private ReferenceRepository referenceRepository;
 
     @Autowired
-    private ReferenceService referenceService;
+    private ArticleReferenceService articleReferenceService;
 
     public void editReference( Long referenceId, HttpServletRequest req){
         AbstractReference vanha = referenceRepository.findOne(referenceId);
         Map<String, String[]> parameterMap = req.getParameterMap();
-        AbstractReference ref = referenceService.createReference(parameterMap);
+        AbstractReference ref = articleReferenceService.createReference(parameterMap);
         vanha.setEntries((EnumMap) ref.getEntries());
         vanha.setName(ref.getName());
         referenceRepository.save(vanha);
     }
 
     /**
-     * Lisää Referencen tietokantaan, palauttaa controlleri true, jos kaikki meni hyvin ja false jos oli virheitä
+     * Lisää Referencen tietokantaan, palauttaa long ID, jos kaikki meni hyvin ja LONG maxValue jos oli virheitä
      * @param req
      * @param model
      * @return
      */
     public Long addReference(HttpServletRequest req, Model model) {
         Map<String, String[]> parameterMap = req.getParameterMap();
-        AbstractReference ref = referenceService.createReference(parameterMap);
+        AbstractReference ref = articleReferenceService.createReference(parameterMap);
         List<String> err = ref.validate();
         if(!err.isEmpty()) {
             model.addAttribute("reference", ref);
