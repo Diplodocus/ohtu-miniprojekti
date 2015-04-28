@@ -15,12 +15,12 @@ import java.util.Map;
  */
 
 @Service
-public  class ReferenceService {
+public abstract class ReferenceService {
     public AbstractReference createReference(Map<String, String[]> entries) {
 
         EnumMap<EntryType, String> mappi = new EnumMap<EntryType, String>(EntryType.class);
 
-        AbstractReference article  = new ArticleReference("uusiArtikkeli", mappi);
+        AbstractReference article  = referenssi(mappi);
 
         for (Map.Entry<String, String[]> entry : entries.entrySet()) {
 
@@ -33,4 +33,5 @@ public  class ReferenceService {
         article.setEntries(mappi);
         return article;
     }
+    abstract AbstractReference referenssi(EnumMap<EntryType, String> mappi);
 }

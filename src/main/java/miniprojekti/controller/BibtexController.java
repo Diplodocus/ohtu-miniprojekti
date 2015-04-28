@@ -30,8 +30,8 @@ public class BibtexController {
     @Autowired
     private ReferenceRepository referenceRepository;
 
-    @Autowired
-    private ReferenceService referenceService;
+  //  @Autowired
+   // private ReferenceService referenceService;
 
     @Autowired
     private BibtexService bes;
