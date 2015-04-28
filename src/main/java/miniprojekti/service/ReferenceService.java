@@ -20,7 +20,7 @@ public  class ReferenceService {
 
         EnumMap<EntryType, String> mappi = new EnumMap<EntryType, String>(EntryType.class);
 
-        AbstractReference article  = referenssi(mappi);
+        AbstractReference article  = new ArticleReference("uusiArtikkeli", mappi);
 
         for (Map.Entry<String, String[]> entry : entries.entrySet()) {
 
@@ -32,8 +32,5 @@ public  class ReferenceService {
         }
         article.setEntries(mappi);
         return article;
-    }
-    public AbstractReference referenssi(EnumMap<EntryType, String> entries){
-        return new ArticleReference("uusiArtikkeli", entries);
     }
 }
