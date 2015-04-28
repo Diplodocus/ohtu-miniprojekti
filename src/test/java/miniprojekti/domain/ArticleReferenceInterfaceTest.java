@@ -8,6 +8,7 @@ package miniprojekti.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 
 import miniprojekti.enums.EntryType;
 import org.junit.Before;
@@ -81,10 +82,17 @@ public class ArticleReferenceInterfaceTest {
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
         entries2.put(AUTHOR, "Juupajuu");
         entries2.put(TITLE, "Juupajuun tarinoita");
-  
+
         articleReference.setEntries(entries2);
 
         assertEquals(articleReference.getEntries(), entries2);
+    }
+
+    @Test
+    public void validateArticleEntries() {
+        List<String> err = new ArrayList<String>();
+        assertEquals(articleReference.validate(), err);
+
     }
 
 }
