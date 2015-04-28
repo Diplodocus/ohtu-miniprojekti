@@ -10,7 +10,9 @@ import javax.print.attribute.standard.PagesPerMinute;
 public enum EntryType {
 
     AUTHOR("AUTHOR"),
+    EDITOR("EDITOR"),
     TITLE("TITLE"),
+    BOOKTITLE("BOOKTITLE"),
     JOURNAL("JOURNAL"),
     YEAR("YEAR"),
     VOLUME("VOLUME"),
@@ -18,7 +20,15 @@ public enum EntryType {
     PAGES("PAGES"),
     MONTH("MONTH"),
     NOTE("NOTE"),
+    PUBLISHER("PUBLISHER"),
+    SERIES("SERIES"),
+    ORGANIZATION("ORGANIZATION"),
+    ADDRESS("ADDRESS"),
+    EDITION("EDITION"),
     KEY("KEY");
+
+
+
 
     private final String type;
 
