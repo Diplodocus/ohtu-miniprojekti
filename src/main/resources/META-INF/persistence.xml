@@ -5,6 +5,7 @@
              version="2.0">
 
     <persistence-unit name="dataSource" transaction-type="RESOURCE_LOCAL">
+        <class>miniprojekti.domain.AbstractReference</class>
     </persistence-unit>
 
 </persistence>
