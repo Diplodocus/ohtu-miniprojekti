@@ -78,8 +78,8 @@ public class BibtexController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/bibtex/add", method = RequestMethod.POST)
-    public String add(HttpServletRequest req, Model model) {
+    @RequestMapping(value = "/bibtex/add/{type}", method = RequestMethod.POST)
+    public String add(@PathVariable("type") HttpServletRequest req, Model model) {
          long refID = bes.addReference(req,model);
 
         if(refID == Long.MAX_VALUE) {
