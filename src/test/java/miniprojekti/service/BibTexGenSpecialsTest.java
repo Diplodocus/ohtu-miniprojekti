@@ -1,7 +1,7 @@
 package miniprojekti.service;
 
+import miniprojekti.domain.AbstractReference;
 import miniprojekti.domain.ArticleReference;
-import miniprojekti.domain.ReferenceInterface;
 import miniprojekti.enums.EntryType;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,15 +16,15 @@ import static org.junit.Assert.assertEquals;
  * Created by cec on 28.4.2015.
  */
 public class BibTexGenSpecialsTest {
-    private ReferenceInterface testReferenceInterface1;
+    private AbstractReference testReferenceInterface1;
     private BibTexGenerator generator;
-    private ArrayList<ReferenceInterface> testReferenceInterfaces;
+    private ArrayList<AbstractReference> testReferenceInterfaces;
 
     @Before
     public void setUp(){
         generator = new BibTexGenerator();
         testReferenceInterface1 = makeRef1();
-        testReferenceInterfaces = new ArrayList<ReferenceInterface>();
+        testReferenceInterfaces = new ArrayList<AbstractReference>();
         testReferenceInterfaces.add(testReferenceInterface1);
     }
 
@@ -55,7 +55,7 @@ public class BibTexGenSpecialsTest {
         return testBibTex;
     }
 
-    private ReferenceInterface makeRef1(){
+    private AbstractReference makeRef1(){
         EnumMap<EntryType, String> entries;
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "Äijälä");

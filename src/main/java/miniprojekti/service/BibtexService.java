@@ -94,4 +94,10 @@ public class BibtexService {
         }
         model.addAttribute("lista", references);
     }
+
+    public void viewAllBibtex(Model model){
+        BibTexGenerator gen = new BibTexGenerator();
+        List<AbstractReference> refList= referenceRepository.findAll();
+        model.addAttribute("bibtex",gen.generateAll(refList));
+    }
 }

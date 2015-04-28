@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 
  */
 @Entity
-public abstract class AbstractReference extends AbstractPersistable<Long> implements ReferenceInterface {
+public abstract class AbstractReference extends AbstractPersistable<Long>  {
     //TODO Halutaanko interface abstract classin lisäksi
 
     private BibTexType type;
@@ -50,7 +50,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
     /**
      * @return name of the domain
      */
-    @Override
     public String getName(){
         return name;
     }
@@ -64,7 +63,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
     /**
      * @return type of the domain
      */
-    @Override
     public BibTexType getType() {
         return type;
     }
@@ -73,7 +71,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
      *
      * @return the entries that my be added to the domain
      */
-    @Override
     public List<EntryType> getOptionalReferenceEntries() {
         return optionalReferenceEntries;
     }
@@ -82,7 +79,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
      *
      * @return the entries that must be added to the domain
      */
-    @Override
     public List<EntryType> getMandatoryReferenceEntries() {
         return mandatoryReferenceEntries;
     }
@@ -91,7 +87,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
      *
      * @return the entries of the domain
      */
-    @Override
     public Map<EntryType, String> getEntries() {
         return entries;
     }
@@ -100,7 +95,6 @@ public abstract class AbstractReference extends AbstractPersistable<Long> implem
      *
      * @param entries new entries for the domain
      */
-    @Override
     public void setEntries(EnumMap<EntryType, String> entries) {
         this.entries = entries;
     }
