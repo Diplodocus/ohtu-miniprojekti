@@ -21,6 +21,9 @@ public class ArticleReference extends AbstractReference {
                 , new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, JOURNAL, YEAR, VOLUME))
                 , new ArrayList<EntryType>(Arrays.asList(NUMBER,PAGES,MONTH,NOTE,KEY)));
     }
+    public ArticleReference(){
+        super();
+    }
 
 
 
