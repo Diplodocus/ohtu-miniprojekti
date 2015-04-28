@@ -22,9 +22,7 @@ public class ArticleReference extends AbstractReference {
                 , new ArrayList<EntryType>(Arrays.asList(NUMBER,PAGES,MONTH,NOTE,KEY)));
     }
 
-    public ArticleReference() {
-        super();
-    }
+
 
     public List<String> validate() {
 

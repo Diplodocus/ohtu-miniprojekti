@@ -18,7 +18,14 @@ public enum EntryType {
     PAGES("PAGES"),
     MONTH("MONTH"),
     NOTE("NOTE"),
+    PUBLISHER("PUBLISHER"),
+    SERIES("SERIES"),
+    ADDRESS("ADDRESS"),
+    EDITION("EDITION"),
     KEY("KEY");
+
+
+
 
     private final String type;
 
