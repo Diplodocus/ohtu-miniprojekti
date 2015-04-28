@@ -28,7 +28,6 @@ public class ArticleReference extends AbstractReference {
 
 
     public List<String> validate() {
-
         List<String> err = new ArrayList<String>();
         if(this.getName().equals("")) {
             err.add("Name is a mandatory field.");
@@ -44,11 +43,12 @@ public class ArticleReference extends AbstractReference {
         }
         if(this.entries.get(YEAR).length()<=0) {
             err.add("Year is a mandatory field.");
+        } else if(!this.entries.get(YEAR).matches("/^d{4}$/")) {
+            err.add("Year must be in format \'yyyy\'");
         }
         if(this.entries.get(VOLUME).length()<=0) {
             err.add("Volume is a mandatory field.");
         }
-
         return err;
     }
 
