@@ -17,6 +17,7 @@ import static miniprojekti.enums.EntryType.YEAR;
 /**
  * Created by cec on 28.4.2015.
  */
+@Entity
 public class BookReference extends AbstractReference{
 
     public BookReference(String name, Map<EntryType, String> entries) {
@@ -24,6 +25,9 @@ public class BookReference extends AbstractReference{
                 , BOOK
                 , new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, PUBLISHER, YEAR))
                 , new ArrayList<EntryType>(Arrays.asList(NUMBER, VOLUME,SERIES,ADDRESS, EDITION,MONTH,NOTE,KEY)));
+    }
+    public BookReference(){
+        super();
     }
 
 

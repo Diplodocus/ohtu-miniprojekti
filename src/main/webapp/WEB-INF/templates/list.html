@@ -9,9 +9,13 @@
 <p>Tervetuloa Diplodocuksen bibtex generaattoriin. Alta löydät kaikki jo luodut bibtextit ja sivun alareunasta löydät linkin uuden lisäämiseen. </p>
 <h2></h2>
 <ul th:each="ref : ${lista}">
-    <li><a th:text="${ref.name}" th:href="@{/bibtex/{id}(id=${ref.id})}"></a></li>
+    <li><a th:text="${ref.name}" th:href="@{/bibtex/{id}(id=${ref.id})}"></a> (<span th:text="${ref.type.name}">
+
+    </span>)</li>
 </ul>
-<a th:href="@{/bibtex/add}">Lisää uusi </a>
+<a th:href="@{/bibtex/add/book}">Lisää uusi KirjaReferenssi</a><br />
+<a th:href="@{/bibtex/add/article}">Lisää uusi ArtikkeliReferenssi</a><br />
+<a th:href="@{/bibtex/add/inproceedings}">Lisää uusi InproceedingsReferenssi</a>
 
 
 </body>

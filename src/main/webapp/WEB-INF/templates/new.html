@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>New article reference</h1>
-
-<form action="#" th:action="@{/bibtex/add}" method="post" th:object="${mappi}">
+<h1>New <span th:text="${reference.type.name}"></span> reference</h1>
+<!-- tässä kohdin tuo actionin URL kusee, tällä toteutuksella -->
+<form action="#" th:action="@{/bibtex/add/{type}(type=${reference.type.name})}" method="post" th:object="${mappi}">
 
     <div th:each="error : ${errors}">
         <span th:text="${error}"></span>

@@ -7,6 +7,8 @@ package miniprojekti.controller;
 
 import miniprojekti.domain.AbstractReference;
 import miniprojekti.domain.ArticleReference;
+import miniprojekti.domain.BookReference;
+import miniprojekti.domain.InproceedingsReference;
 import miniprojekti.enums.EntryType;
 import miniprojekti.service.BibTexGenerator;
 import miniprojekti.repository.ReferenceRepository;
@@ -30,9 +32,6 @@ public class BibtexController {
     @Autowired
     private ReferenceRepository referenceRepository;
 
-  //  @Autowired
-   // private ReferenceService referenceService;
-
     @Autowired
     private BibtexService bes;
 
@@ -52,11 +51,25 @@ public class BibtexController {
         return "view";
     }
 
-    @RequestMapping("/bibtex/add")
-    public String addForm(ModelMap model) {
+    /**
+     * Ottaa PathVariablesta tyypin ja tekee lomakkeen sen mukaan
+     * @param type
+     * @param model
+     * @return
+     */
+    @RequestMapping("/bibtex/add/{type}")
+    public String addForm(@PathVariable ("type") String type, ModelMap model) {
         EnumMap<EntryType, String> mappi = new EnumMap<EntryType, String>(EntryType.class);
+        AbstractReference article = null;
 
-        ArticleReference article = new ArticleReference("uusi", mappi);
+        if(type.equals("article")){
+             article = new ArticleReference("uusi", mappi);
+
+        } else if (type.equals("book")){
+             article = new BookReference("uusi", mappi);
+        } else {
+            article = new InproceedingsReference("uusi", mappi);
+        }
 
         for(EntryType key:article.getMandatoryReferenceEntries()) {
             mappi.put(key, null);
@@ -79,8 +92,9 @@ public class BibtexController {
      * @return
      */
     @RequestMapping(value = "/bibtex/add/{type}", method = RequestMethod.POST)
-    public String add(@PathVariable("type") HttpServletRequest req, Model model) {
-         long refID = bes.addReference(req,model);
+    public String add(@PathVariable("type") String type, HttpServletRequest req, Model model) {
+
+         long refID = bes.addReference(type,req,model);
 
         if(refID == Long.MAX_VALUE) {
             return "new";
