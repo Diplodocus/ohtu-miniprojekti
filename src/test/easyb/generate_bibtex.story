@@ -39,11 +39,11 @@ driver.get("http://localhost:8080/bibtex/add/book");
         element.submit();
     }
     when 'generate all is selected', {
-driver.get("http://localhost:8080/bibtex/all");
+    driver.get("http://localhost:8080/bibtex/all");
     }
     then 'new BibTex file is generated', {
-driver.getPageSource().contains("kirja").shouldBe true
-driver.getPageSource().contains("artikkeli").shouldBe true
+    driver.getPageSource().contains("kirja").shouldBe true
+    driver.getPageSource().contains("artikkeli").shouldBe true
     }
 }
 
