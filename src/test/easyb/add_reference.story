@@ -1,5 +1,4 @@
 import miniprojekti.*;
-import miniprojekti.reference.*;
 
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.*;
@@ -9,7 +8,7 @@ description 'User can add a reference'
 scenario "Article type reference is created with mandatory entries", {
     given 'command add selected', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/bibtex/add");
+        driver.get("http://localhost:8080/bibtex/add/article");
 
 
     }
@@ -40,7 +39,7 @@ scenario "Article type reference is created with mandatory entries", {
 scenario "reset clears all fields ", {
     given 'command add selected', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/bibtex/add");
+        driver.get("http://localhost:8080/bibtex/add/article");
 
     }
     when 'mandatory field is cleared', {
@@ -69,7 +68,7 @@ scenario "reset clears all fields ", {
 scenario "Article type reference is not created if missing mandatory entries", {
     given 'command add selected', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/bibtex/add");
+        driver.get("http://localhost:8080/bibtex/add/article");
 
     }
     when 'mandatory field is left empty', {

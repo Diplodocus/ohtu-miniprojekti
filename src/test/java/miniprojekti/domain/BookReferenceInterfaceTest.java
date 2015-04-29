@@ -9,19 +9,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
-
+import static miniprojekti.enums.BibTexType.*;
 import miniprojekti.enums.EntryType;
+import static miniprojekti.enums.EntryType.*;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static miniprojekti.enums.EntryType.*;
-import static miniprojekti.enums.BibTexType.*;
 
-public class ArticleReferenceInterfaceTest {
+/**
+ *
+ * @author johanna
+ */
+public class BookReferenceInterfaceTest {
 
-    ArticleReference articleReference;
-    ArticleReference articleReference2;
-    ArticleReference articleReference3;
+    BookReference bookReference;
+    BookReference bookReference2;
+    BookReference bookReference3;
 
     @Before
     public void setUp() {
@@ -29,17 +35,17 @@ public class ArticleReferenceInterfaceTest {
         entries = new EnumMap<EntryType, String>(EntryType.class);
         entries.put(AUTHOR, "Spohrer, James C. and Soloway, Elliot");
         entries.put(TITLE, "Novice mistakes: are the folk wisdoms correct?");
-        entries.put(JOURNAL, "Commun. ACM");
+        entries.put(PUBLISHER, "ASD");
         entries.put(VOLUME, "29");
         entries.put(NUMBER, "7");
         entries.put(YEAR, "1986");
         entries.put(PAGES, "624--632");
-        articleReference = new ArticleReference("SS86", entries);
+        bookReference = new BookReference("SS86", entries);
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
         entries2.put(PAGES, "14--16");
-        articleReference2 = new ArticleReference("SS87", entries2);
+        bookReference2 = new BookReference("SS87", entries2);
 
         EnumMap<EntryType, String> entries3;
         entries3 = new EnumMap<EntryType, String>(EntryType.class);
@@ -49,83 +55,79 @@ public class ArticleReferenceInterfaceTest {
         entries3.put(VOLUME, "");
         entries3.put(NUMBER, "");
         entries3.put(YEAR, "");
-        articleReference3 = new ArticleReference("SS86", entries3);
-
+        bookReference3 = new BookReference("SS86", entries3);
     }
 
     @Test
-    public void setNameForArticleReference() {
-        assertEquals("SS86", articleReference.getName());
+    public void setNameForBookReference() {
+        assertEquals("SS86", bookReference.getName());
     }
 
     @Test
-    public void referenceTypeIsSetToArticle() {
-        assertEquals(ARTICLE, articleReference.getType());
+    public void referenceTypeIsSetToBook() {
+        assertEquals(BOOK, bookReference.getType());
     }
 
     @Test
-    public void mandatoryReferenceEntriesForArticleSetCorrectly() {
+    public void mandatoryReferenceEntriesForBookSetCorrectly() {
 
         ArrayList<EntryType> mandatoryList;
-        mandatoryList = new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, JOURNAL, YEAR, VOLUME));
+        mandatoryList = new ArrayList<EntryType>(Arrays.asList(AUTHOR, TITLE, PUBLISHER, YEAR));
 
-        assertEquals(mandatoryList, articleReference.getMandatoryReferenceEntries());
+        assertEquals(mandatoryList, bookReference.getMandatoryReferenceEntries());
     }
 
     @Test
-    public void optionalReferenceEntriesForArticleSetCorrectly() {
+    public void optionalReferenceEntriesForBookSetCorrectly() {
         ArrayList<EntryType> optionalList;
-        optionalList = new ArrayList<EntryType>(Arrays.asList(NUMBER, PAGES, MONTH, NOTE, KEY));
+        optionalList = new ArrayList<EntryType>(Arrays.asList(NUMBER, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY));
 
-        assertEquals(optionalList, articleReference.getOptionalReferenceEntries());
+        assertEquals(optionalList, bookReference.getOptionalReferenceEntries());
     }
 
     @Test
-    public void settingEntriesForArticleWorks() {
+    public void settingEntriesForBookWorks() {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
         entries2.put(AUTHOR, "Juupajuu");
         entries2.put(TITLE, "Juupajuun tarinoita");
 
-        articleReference.setEntries(entries2);
+        bookReference.setEntries(entries2);
 
-        assertEquals(articleReference.getEntries(), entries2);
+        assertEquals(bookReference.getEntries(), entries2);
     }
-
-    @Test
-    public void articleValidatePassesWithAllMandatoryFields() {
+    
+  @Test
+    public void bookValidatePassesWithAllMandatoryFields() {
         List<String> err = new ArrayList<String>();
-        assertEquals(articleReference.validate(), err);
+        assertEquals(bookReference.validate(), err);
 
     }
 
     @Test
-    public void articleValidateFailsWhenMissingMandatoryFields() {
-        List<String> err = new ArrayList<String>();
-
-        err.add("Author is a mandatory field.");
-        err.add("Title is a mandatory field.");
-        err.add("Journal is a mandatory field.");
-        err.add("Year is a mandatory field.");
-        err.add("Volume is a mandatory field.");
-
-        assertEquals(articleReference2.validate(), err);
-
-    }
-
-    @Test
-    public void aticleValidateFailsWhenFieldEntriesAreInvalid() {
+    public void bookValidateFailsWhenMissingMandatoryFields() {
         List<String> err = new ArrayList<String>();
 
         err.add("Author is a mandatory field.");
         err.add("Title is a mandatory field.");
-        err.add("Journal is a mandatory field.");
+        err.add("Publisher is a mandatory field.");
         err.add("Year is a mandatory field.");
-        err.add("Volume is a mandatory field.");
 
-        assertEquals(articleReference3.validate(), err);
+        assertEquals(bookReference2.validate(), err);
 
     }
 
+    @Test
+    public void bookValidateFailsWhenFieldEntriesAreInvalid() {
+        List<String> err = new ArrayList<String>();
+
+        err.add("Author is a mandatory field.");
+        err.add("Title is a mandatory field.");
+        err.add("Publisher is a mandatory field.");
+        err.add("Year is a mandatory field.");
+
+        assertEquals(bookReference3.validate(), err);
+
+    }
 }
