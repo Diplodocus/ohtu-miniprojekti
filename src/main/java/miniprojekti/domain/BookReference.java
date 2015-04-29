@@ -47,16 +47,16 @@ public class BookReference extends AbstractReference{
         if(this.getName().equals("")) {
             err.add("Name is a mandatory field.");
         }
-        if(this.entries.get(AUTHOR).length()<=0) {
+        if(!this.entries.containsKey(AUTHOR) ||this.entries.get(AUTHOR).length()<=0) {
             err.add("Author is a mandatory field.");
         }
-        if(this.entries.get(TITLE).length()<=0) {
+        if(!this.entries.containsKey(TITLE) ||this.entries.get(TITLE).length()<=0) {
             err.add("Title is a mandatory field.");
         }
-        if(this.entries.get(PUBLISHER).length()<=0) {
+        if(!this.entries.containsKey(PUBLISHER) ||this.entries.get(PUBLISHER).length()<=0) {
             err.add("Publisher is a mandatory field.");
         }
-        if(this.entries.get(YEAR).length()<=0) {
+        if(!this.entries.containsKey(YEAR) ||this.entries.get(YEAR).length()<=0) {
             err.add("Year is a mandatory field.");
         } else if(!this.entries.get(YEAR).matches("^\\d{4}$")) {
             err.add("Year must be in format \'yyyy\'");

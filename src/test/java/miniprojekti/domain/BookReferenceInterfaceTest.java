@@ -27,6 +27,7 @@ public class BookReferenceInterfaceTest {
 
     BookReference bookReference;
     BookReference bookReference2;
+    BookReference bookReference3;
 
     @Before
     public void setUp() {
@@ -43,14 +44,18 @@ public class BookReferenceInterfaceTest {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
-        entries2.put(AUTHOR, "Juupajuu");
-        entries2.put(TITLE, "Juupajuun tarinoita");
-
-        entries2.put(VOLUME, "4");
-        entries2.put(NUMBER, "2");
-        entries2.put(YEAR, "2015");
         entries2.put(PAGES, "14--16");
         bookReference2 = new BookReference("SS87", entries2);
+
+        EnumMap<EntryType, String> entries3;
+        entries3 = new EnumMap<EntryType, String>(EntryType.class);
+        entries3.put(AUTHOR, "");
+        entries3.put(TITLE, "");
+        entries3.put(JOURNAL, "");
+        entries3.put(VOLUME, "");
+        entries3.put(NUMBER, "");
+        entries3.put(YEAR, "");
+        bookReference3 = new BookReference("SS86", entries3);
     }
 
     @Test
@@ -81,7 +86,7 @@ public class BookReferenceInterfaceTest {
     }
 
     @Test
-    public void settingEntriesForArticleWorks() {
+    public void settingEntriesForBookWorks() {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
@@ -93,10 +98,36 @@ public class BookReferenceInterfaceTest {
         assertEquals(bookReference.getEntries(), entries2);
     }
     
-    @Test
-    public void validateBookEntries() {
+  @Test
+    public void bookValidatePassesWithAllMandatoryFields() {
         List<String> err = new ArrayList<String>();
         assertEquals(bookReference.validate(), err);
-        
+
+    }
+
+    @Test
+    public void bookValidateFailsWhenMissingMandatoryFields() {
+        List<String> err = new ArrayList<String>();
+
+        err.add("Author is a mandatory field.");
+        err.add("Title is a mandatory field.");
+        err.add("Publisher is a mandatory field.");
+        err.add("Year is a mandatory field.");
+
+        assertEquals(bookReference2.validate(), err);
+
+    }
+
+    @Test
+    public void bookValidateFailsWhenFieldEntriesAreInvalid() {
+        List<String> err = new ArrayList<String>();
+
+        err.add("Author is a mandatory field.");
+        err.add("Title is a mandatory field.");
+        err.add("Publisher is a mandatory field.");
+        err.add("Year is a mandatory field.");
+
+        assertEquals(bookReference3.validate(), err);
+
     }
 }

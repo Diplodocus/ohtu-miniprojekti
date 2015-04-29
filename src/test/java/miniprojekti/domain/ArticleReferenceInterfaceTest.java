@@ -21,6 +21,7 @@ public class ArticleReferenceInterfaceTest {
 
     ArticleReference articleReference;
     ArticleReference articleReference2;
+    ArticleReference articleReference3;
 
     @Before
     public void setUp() {
@@ -37,14 +38,18 @@ public class ArticleReferenceInterfaceTest {
 
         EnumMap<EntryType, String> entries2;
         entries2 = new EnumMap<EntryType, String>(EntryType.class);
-        entries2.put(AUTHOR, "Juupajuu");
-        entries2.put(TITLE, "Juupajuun tarinoita");
-        entries2.put(JOURNAL, "Asd");
-        entries2.put(VOLUME, "4");
-        entries2.put(NUMBER, "2");
-        entries2.put(YEAR, "2015");
         entries2.put(PAGES, "14--16");
         articleReference2 = new ArticleReference("SS87", entries2);
+
+        EnumMap<EntryType, String> entries3;
+        entries3 = new EnumMap<EntryType, String>(EntryType.class);
+        entries3.put(AUTHOR, "");
+        entries3.put(TITLE, "");
+        entries3.put(JOURNAL, "");
+        entries3.put(VOLUME, "");
+        entries3.put(NUMBER, "");
+        entries3.put(YEAR, "");
+        articleReference3 = new ArticleReference("SS86", entries3);
 
     }
 
@@ -89,9 +94,37 @@ public class ArticleReferenceInterfaceTest {
     }
 
     @Test
-    public void validateArticleEntries() {
+    public void articleValidatePassesWithAllMandatoryFields() {
         List<String> err = new ArrayList<String>();
         assertEquals(articleReference.validate(), err);
+
+    }
+
+    @Test
+    public void articleValidateFailsWhenMissingMandatoryFields() {
+        List<String> err = new ArrayList<String>();
+
+        err.add("Author is a mandatory field.");
+        err.add("Title is a mandatory field.");
+        err.add("Journal is a mandatory field.");
+        err.add("Year is a mandatory field.");
+        err.add("Volume is a mandatory field.");
+
+        assertEquals(articleReference2.validate(), err);
+
+    }
+
+    @Test
+    public void aticleValidateFailsWhenFieldEntriesAreInvalid() {
+        List<String> err = new ArrayList<String>();
+
+        err.add("Author is a mandatory field.");
+        err.add("Title is a mandatory field.");
+        err.add("Journal is a mandatory field.");
+        err.add("Year is a mandatory field.");
+        err.add("Volume is a mandatory field.");
+
+        assertEquals(articleReference3.validate(), err);
 
     }
 
