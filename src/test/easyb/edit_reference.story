@@ -42,3 +42,34 @@ scenario "User can edit a reference", {
     }
 }
 
+scenario "User can delete a reference", {
+    given 'reference is selected', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/bibtex/add/article");
+
+        element = driver.findElement(By.name("name"));
+        element.sendKeys("a Document");
+        element = driver.findElement(By.name("AUTHOR"));
+        element.sendKeys("deletoija");
+        element = driver.findElement(By.name("TITLE"));
+        element.sendKeys("how to code");
+        element = driver.findElement(By.name("YEAR"));
+        element.sendKeys("2015");
+        element = driver.findElement(By.name("VOLUME"));
+        element.sendKeys("123");
+        element = driver.findElement(By.name("JOURNAL"));
+        element.sendKeys("Journali")
+        element.submit();
+
+    }
+    when 'command delete is selected', {
+    elementti = driver.findElement(By.name("delete"));
+    elementti.submit();
+    }
+    then "reference is deleted", {
+        driver.getPageSource().contains("Tervetuloa").shouldBe true
+        driver.getPageSource().contains("deletoija").shouldBe false
+    }
+}
+
+
