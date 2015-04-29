@@ -8,7 +8,7 @@
 <h1>Result</h1>
 <pre><code th:text="'bibtex: ' + ${bibtex}"> </code></pre>
 <form th:method="get" th:object="${ref}" th:action="@{/bibtex/edit/{id}(id=${ref.id})}">
-    <input th:value="Edit" th:type="submit"/>
+    <input th:value="Edit" th:type="submit" name="edit"/>
 </form>
 <form th:method="delete" th:object="${ref}" th:action="@{/bibtex/delete/{id}(id=${ref.id})}">
     <input th:value="Delete" th:type="submit"/>
